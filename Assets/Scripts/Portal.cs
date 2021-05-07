@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Portal : MonoBehaviour
 {
+    //enviroment asssets
+    public Vector3 mousepos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
     //Portal assets:
     public Transform portalBlueSpawnPos, portalOrangeSpawnPos;
     public GameObject portalBlue, portalOrange;
@@ -15,11 +17,9 @@ public class Portal : MonoBehaviour
     public Camera cam;
     public Transform firePoint;
     public LineRenderer lineRenderer;
-    PlayerController PlayerController;
 
-    Gradient gradient;
-    GradientColorKey[] colorKey;
-    GradientAlphaKey[] alphaKey;
+
+
 
     private void Awake()
     {
@@ -27,10 +27,12 @@ public class Portal : MonoBehaviour
         DontDestroyOnLoad(portalOrange);
         DontDestroyOnLoad(portalGreen);
         DontDestroyOnLoad(Player);
+        DontDestroyOnLoad(Camera.main);
     }
 
     void Update()
     {
+        mousepos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -1));
         if (Input.GetButtonDown("Fire1"))//press left mouse button
         {
             StartCoroutine(ShootBlue());
@@ -39,12 +41,12 @@ public class Portal : MonoBehaviour
         {
             StartCoroutine(ShootOrange());
         }
-        else if (Input.GetKey(KeyCode.F))//press right mouse button
+        else if (Input.GetKeyDown(KeyCode.F))//press f button
         {
             StartCoroutine(ShootGreen());
         }
     }
-
+    
     void Shoot()
     {
         Vector3 mouse = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0);
@@ -77,23 +79,35 @@ public class Portal : MonoBehaviour
             lineRenderer.SetPosition(0, firePoint.position);
             lineRenderer.SetPosition(1, Camera.main.ScreenToWorldPoint(Input.mousePosition));
 
-            if (hitInfo.transform.name == "Character")
+            if (hitInfo.transform.name == "Character" || hitInfo.transform.name == "BluePortal" || hitInfo.transform.name == "OrangePortal" || hitInfo.transform.name == "GreenPortal")
             {
                 Physics2D.IgnoreCollision(PlayerColl, PlayerColl, true);
             }
-            else if (Input.GetAxis("Horizontal") > 0)
+            else if (Player.transform.rotation.eulerAngles.y < 1 && transform.rotation.eulerAngles.y > -1)//if going right
             {
-                portalBlue.transform.position = new Vector3(hitInfo.transform.position.x -1, firePoint.transform.position.y + 0.1f, 0);
+                portalBlue.transform.position = new Vector3(hitInfo.transform.position.x - 1, mousepos.y);
                 portalBlue.transform.rotation = Quaternion.Euler(Vector3.forward * 0);
             }
-            else if (Input.GetAxis("Horizontal") < 0)
+            else
             {
-                portalBlue.transform.position = new Vector3(hitInfo.transform.position.x + 1, firePoint.transform.position.y + 0.1f, 0);
+                portalBlue.transform.position = new Vector3(hitInfo.transform.position.x + 1, mousepos.y);
                 portalBlue.transform.rotation = Quaternion.Euler(Vector3.forward * 180);
+            }
+            if (hitInfo.transform.gameObject.layer == LayerMask.NameToLayer("UP"))
+            {
+                portalBlue.transform.position = new Vector3(mousepos.x, hitInfo.transform.position.y - 1f);
+                portalBlue.transform.rotation = Quaternion.Euler(Vector3.forward * 90);
+            }else if (hitInfo.transform.gameObject.layer == LayerMask.NameToLayer("DOWN"))
+            {
+                portalBlue.transform.position = new Vector3(mousepos.x, hitInfo.transform.position.y + 1f);
+                portalBlue.transform.rotation = Quaternion.Euler(Vector3.forward * -90);
+            }
+            else
+            {
             }
         }
         else
-        {
+        {//if hit nothing then stretch 100x to the right
             lineRenderer.SetPosition(0, firePoint.position);
             lineRenderer.SetPosition(1, firePoint.position + firePoint.right * 100);
         }
@@ -108,51 +122,52 @@ public class Portal : MonoBehaviour
     {
         RaycastHit2D hitInfo = Physics2D.Raycast(firePoint.position, Camera.main.ScreenToWorldPoint(Input.mousePosition));
 
+        //color to orange
         lineRenderer.startColor = new Color(255, 0, 0, 255);
         lineRenderer.endColor = new Color(255, 0, 0, 255);
 
         if (hitInfo)
         {
-            Debug.Log(hitInfo.transform.name);
             //lineRenderer.SetPosition(0, firePoint.position);
             //lineRenderer.SetPosition(1, hitInfo.point);
             lineRenderer.SetPosition(0, firePoint.position);
             lineRenderer.SetPosition(1, Camera.main.ScreenToWorldPoint(Input.mousePosition));
 
-            if (hitInfo.transform.name == "Character")
+            if (hitInfo.transform.name == "Character" || hitInfo.transform.name == "BluePortal" || hitInfo.transform.name == "OrangePortal" || hitInfo.transform.name == "GreenPortal")
             {
                 Physics2D.IgnoreCollision(PlayerColl, PlayerColl, true);
             }
-            else if (Input.GetAxis("Horizontal") > 0)
+            else if (Player.transform.rotation.eulerAngles.y < 1 && transform.rotation.eulerAngles.y > -1)//if going right
             {
-                if (Input.GetAxis("Horizontal") == 0)
-                {
-                    portalOrange.transform.position = new Vector3(hitInfo.transform.position.x + 0.3f, firePoint.transform.position.y + 0.1f, 0);
-                    portalOrange.transform.rotation = Quaternion.Euler(Vector3.forward * 180);
-                }
-                portalOrange.transform.position = new Vector3(hitInfo.transform.position.x + 0.3f, firePoint.transform.position.y + 0.1f, 0);
+                portalOrange.transform.position = new Vector3(hitInfo.transform.position.x + 0.3f, mousepos.y);
                 portalOrange.transform.rotation = Quaternion.Euler(Vector3.forward * 180);
             }
-            else if (Input.GetAxis("Horizontal") < 0)
+            else
             {
-                if (Input.GetAxis("Horizontal") == 0)
-                {
-                    portalOrange.transform.position = new Vector3(hitInfo.transform.position.x - 0.4f, firePoint.transform.position.y + 0.1f, 0);
-                    portalOrange.transform.rotation = Quaternion.Euler(Vector3.forward * 0);
-                }
-                portalOrange.transform.position = new Vector3(hitInfo.transform.position.x - 0.4f, firePoint.transform.position.y + 0.1f, 0);
+                portalOrange.transform.position = new Vector3(hitInfo.transform.position.x - 0.3f, mousepos.y);
                 portalOrange.transform.rotation = Quaternion.Euler(Vector3.forward * 0);
+
+            }
+            if (hitInfo.transform.gameObject.layer == LayerMask.NameToLayer("UP"))
+            {
+                portalOrange.transform.position = new Vector3(mousepos.x, hitInfo.transform.position.y + 0.3f);
+                portalOrange.transform.rotation = Quaternion.Euler(Vector3.forward * -90);
+            }
+            else if (hitInfo.transform.gameObject.layer == LayerMask.NameToLayer("DOWN"))
+            {
+                portalOrange.transform.position = new Vector3(mousepos.x, hitInfo.transform.position.y - 0.3f);
+                portalOrange.transform.rotation = Quaternion.Euler(Vector3.forward * 90);
             }
         }
         else
-        {
+        {//if hit nothing then stretch 100x to the right
             lineRenderer.SetPosition(0, firePoint.position);
             lineRenderer.SetPosition(1, firePoint.position + firePoint.right * 100);
         }
         //enable shooting line
         lineRenderer.enabled = true;
         //wait some time
-        yield return new WaitForSeconds(0.02f);
+        yield return new WaitForSeconds(0.04f);
         //disable shooting line
         lineRenderer.enabled = false;
     }
@@ -165,7 +180,7 @@ public class Portal : MonoBehaviour
 
         if (hitInfo)
         {
-            Debug.Log(hitInfo.transform.name);
+            
             //lineRenderer.SetPosition(0, firePoint.position);
             //lineRenderer.SetPosition(1, hitInfo.point);
             lineRenderer.SetPosition(0, firePoint.position);
@@ -175,26 +190,22 @@ public class Portal : MonoBehaviour
             {
                 Physics2D.IgnoreCollision(PlayerColl, PlayerColl, true);
             }
-            else if (Input.GetAxis("Horizontal") > 0)
+            else 
             {
-                portalBlue.transform.position = new Vector3(hitInfo.transform.position.x - 1, firePoint.transform.position.y + 0.1f, 0);
-                portalBlue.transform.rotation = Quaternion.Euler(Vector3.forward * 0);
-            }
-            else if (Input.GetAxis("Horizontal") < 0)
-            {
-                portalBlue.transform.position = new Vector3(hitInfo.transform.position.x + 1, firePoint.transform.position.y + 0.1f, 180);
-                portalBlue.transform.rotation = Quaternion.Euler(Vector3.forward * 180);
+                portalGreen.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, 222, Input.mousePosition.z + 10));
+                //, firePoint.transform.position.y + 0.1f, 0);
+                portalGreen.transform.rotation = Quaternion.Euler(Vector3.forward * 0);
             }
         }
         else
         {
             lineRenderer.SetPosition(0, firePoint.position);
-            lineRenderer.SetPosition(1, firePoint.position + firePoint.right * 100);
+            lineRenderer.SetPosition(1, firePoint.position + Camera.main.ScreenToWorldPoint(Input.mousePosition) * 100);
         }
         //enable shooting line
         lineRenderer.enabled = true;
         //wait some time
-        yield return new WaitForSeconds(0.02f);
+        yield return new WaitForSeconds(0.04f);
         //disable shooting line
         lineRenderer.enabled = false;
     }

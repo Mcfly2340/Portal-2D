@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: 144019679}
   - component: {fileID: 144019678}
   - component: {fileID: 144019677}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Square (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -520,7 +520,7 @@ GameObject:
   - component: {fileID: 352330568}
   - component: {fileID: 352330567}
   - component: {fileID: 352330569}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Square (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -629,7 +629,6 @@ GameObject:
   m_Component:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
-  - component: {fileID: 519420029}
   - component: {fileID: 519420030}
   m_Layer: 0
   m_Name: Main Camera
@@ -638,14 +637,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &519420029
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
 --- !u!114 &519420030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -658,6 +649,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d4ee8b79cec634459242aae4146b35c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1496423206}
+  offset: {x: 0, y: 0, z: -0.75}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -708,8 +701,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.07, z: -1.03}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -739,7 +732,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 537028773}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.66, y: -0.01, z: -3.6559768}
+  m_LocalPosition: {x: 1.94, y: -0.01, z: -3.6559768}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1184275962}
@@ -769,7 +762,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 549574685}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.24, y: -0.01, z: -3.6559768}
+  m_LocalPosition: {x: -0.61, y: -0.04, z: -3.6559768}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2142937646}
@@ -1027,7 +1020,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1184275962}
-  - component: {fileID: 1184275961}
   - component: {fileID: 1184275963}
   - component: {fileID: 1184275964}
   - component: {fileID: 1184275965}
@@ -1038,22 +1030,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1184275961
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1184275960}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e91f20d8d6698a040bfd7e7cd25a6133, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Blueportal: {fileID: 2142937645}
-  OrangePortal: {fileID: 1184275960}
-  bluePortalSpawnpoint: {fileID: 549574686}
-  orangePortalSpawnpoint: {fileID: 537028774}
 --- !u!4 &1184275962
 Transform:
   m_ObjectHideFlags: 0
@@ -1062,7 +1038,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1184275960}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.59, y: -42.46, z: -0.15162162}
+  m_LocalPosition: {x: -2.42, y: -39.3, z: -0.15162162}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 201286394}
@@ -1109,6 +1085,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91348ee44b3a45d49aa9f99adba92efd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mousepos: {x: 0, y: 0, z: 0}
   portalBlueSpawnPos: {fileID: 549574686}
   portalOrangeSpawnPos: {fileID: 537028774}
   portalBlue: {fileID: 2142937645}
@@ -1369,6 +1346,7 @@ MonoBehaviour:
   playerPos: {fileID: 1496423206}
   jumpForce: 16
   jumpHeight: {x: 0, y: 0}
+  maxVelocity: 80
 --- !u!50 &1496423203
 Rigidbody2D:
   serializedVersion: 4
@@ -1466,7 +1444,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1496423201}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.29, y: -2.49, z: 0}
+  m_LocalPosition: {x: -5.5, y: -2.95, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 676169895}
@@ -1525,7 +1503,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1628024042}
-  - component: {fileID: 1628024041}
   - component: {fileID: 1628024040}
   - component: {fileID: 1628024039}
   - component: {fileID: 1628024043}
@@ -1548,7 +1525,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91348ee44b3a45d49aa9f99adba92efd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  portalBlueSpawnPos: {fileID: 1511427110}
+  mousepos: {x: 0, y: 0, z: 0}
+  portalBlueSpawnPos: {fileID: 549574686}
   portalOrangeSpawnPos: {fileID: 537028774}
   portalBlue: {fileID: 2142937645}
   portalOrange: {fileID: 1184275960}
@@ -1584,22 +1562,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.98, y: 2.53}
   m_EdgeRadius: 0
---- !u!114 &1628024041
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1628024038}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e91f20d8d6698a040bfd7e7cd25a6133, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Blueportal: {fileID: 2142937645}
-  OrangePortal: {fileID: 1184275960}
-  bluePortalSpawnpoint: {fileID: 1511427110}
-  orangePortalSpawnpoint: {fileID: 537028774}
 --- !u!4 &1628024042
 Transform:
   m_ObjectHideFlags: 0
@@ -1608,7 +1570,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1628024038}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.8999999, y: -39.2, z: -0.15162162}
+  m_LocalPosition: {x: 15.1, y: -2.7, z: -4.21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1511427110}
@@ -1933,7 +1895,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2142937645}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.1, y: -39.2, z: -0.15162162}
+  m_LocalPosition: {x: 0.13, y: -39.27, z: -0.15162162}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1928940063}
@@ -1954,10 +1916,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e91f20d8d6698a040bfd7e7cd25a6133, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Blueportal: {fileID: 2142937645}
-  OrangePortal: {fileID: 1184275960}
-  bluePortalSpawnpoint: {fileID: 549574686}
-  orangePortalSpawnpoint: {fileID: 537028774}
 --- !u!61 &2142937648
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1996,6 +1954,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91348ee44b3a45d49aa9f99adba92efd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mousepos: {x: 0, y: 0, z: 0}
   portalBlueSpawnPos: {fileID: 549574686}
   portalOrangeSpawnPos: {fileID: 537028774}
   portalBlue: {fileID: 2142937645}

@@ -16,6 +16,10 @@ public class PlayerController : MonoBehaviour
     private bool isOnGround;
     //facing direction player
     bool isFacingRight = true;
+
+
+    public float maxVelocity = 80;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +33,11 @@ public class PlayerController : MonoBehaviour
         //rb.velocity = new Vector2(0, dirY);
         Jump();
         Movement();
+    }
+
+    void FixedUpdate()
+    {
+        this.rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxVelocity);
     }
 
     private void Movement()
@@ -47,9 +56,7 @@ public class PlayerController : MonoBehaviour
             flipPlayer();
         }
     }
-    private void FixedUpdate()
-    {
-    }
+
     private void Jump()
     {
         isOnGround = Physics2D.OverlapCircle(playerPos.position, positionRadius, ground);
@@ -58,6 +65,7 @@ public class PlayerController : MonoBehaviour
             rb.velocity = Vector2.up * jumpForce;
         }
     }
+
     void flipPlayer()
     {
         isFacingRight = !isFacingRight;

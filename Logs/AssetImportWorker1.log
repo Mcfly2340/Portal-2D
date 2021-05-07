@@ -1,0 +1,357 @@
+Using pre-set license
+Built from '2021.1/release' branch; Version is '2021.1.0f1 (61a549675243) revision 6399305'; Using compiler version '192528614'; Build Type 'Release'
+OS: 'Windows 10 Home; OS build 21370.1; Version 2009; 64bit' Language: 'en' Physical Memory: 8044 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
+
+ COMMAND LINE ARGUMENTS:
+C:\UnityProjects\2021.1.0f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker1
+-projectPath
+C:/UnityProjects/Portal-2D
+-logFile
+Logs/AssetImportWorker1.log
+-srvPort
+64714
+Successfully changed project path to: C:/UnityProjects/Portal-2D
+C:/UnityProjects/Portal-2D
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 54.57 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2021.1.0f1 (61a549675243)
+[Subsystems] Discovering subsystems at path C:/UnityProjects/2021.1.0f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/UnityProjects/Portal-2D/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce GTX 1650 (ID=0x1f91)
+    Vendor:   NVIDIA
+    VRAM:     3964 MB
+    Driver:   27.21.14.6627
+Initialize mono
+Mono path[0] = 'C:/UnityProjects/2021.1.0f1/Editor/Data/Managed'
+Mono path[1] = 'C:/UnityProjects/2021.1.0f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'C:/UnityProjects/2021.1.0f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56972
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/UnityProjects/2021.1.0f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.002226 seconds.
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 47.50 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  8.814 seconds
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.001252 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 44.43 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.275 seconds
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.12 seconds
+Refreshing native plugins compatible for Editor in 0.37 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1833 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 88.1 MB.
+System memory in use after: 88.1 MB.
+
+Unloading 23 unused Assets to reduce memory usage. Loaded Objects now: 2302.
+Total: 4.462000 ms (FindLiveObjects: 0.363100 ms CreateObjectMapping: 0.237900 ms MarkObjects: 3.694700 ms  DeleteObjects: 0.164500 ms)
+
+========================================================================
+Received Import Request.
+  path: Assets/Scenes/Alternate.unity
+  artifactKey: Guid(29fac75a99fc6f746831a6f3ecca753f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Alternate.unity using Guid(29fac75a99fc6f746831a6f3ecca753f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cf695ba63b1263e997e91e349a414d94') in 0.018139 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000256 seconds.
+  path: Assets/Scenes/Main Scene.unity
+  artifactKey: Guid(2cda990e2423bbf4892e6590ba056729) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Main Scene.unity using Guid(2cda990e2423bbf4892e6590ba056729) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fddf3cbba47c0efc249802fc1e0af61f') in 0.008585 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 112.894714 seconds.
+  path: Assets/Scenes/Alternate.unity
+  artifactKey: Guid(29fac75a99fc6f746831a6f3ecca753f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Alternate.unity using Guid(29fac75a99fc6f746831a6f3ecca753f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2d09e5b9e9311ed643940f892a860416') in 0.019609 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002165 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.39 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.150 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.47 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1828 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 88.1 MB.
+System memory in use after: 88.1 MB.
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 2306.
+Total: 4.317000 ms (FindLiveObjects: 0.285700 ms CreateObjectMapping: 0.142800 ms MarkObjects: 3.714700 ms  DeleteObjects: 0.171300 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 206.710247 seconds.
+  path: Assets/Foliage2D/Gizmos/blue_circle.png
+  artifactKey: Guid(94160e95955c6b844b2b634c53209d87) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Foliage2D/Gizmos/blue_circle.png using Guid(94160e95955c6b844b2b634c53209d87) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'acce4bc0dabf1f5255eceb467723c798') in 0.313997 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000471 seconds.
+  path: Assets/Foliage2D/Gizmos/dot-plus.png
+  artifactKey: Guid(603fdde61b2a77e4fabe371d6fc97af7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Foliage2D/Gizmos/dot-plus.png using Guid(603fdde61b2a77e4fabe371d6fc97af7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7ea30ddf8ae759450d5a1a079476fe5f') in 0.050641 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000259 seconds.
+  path: Assets/Sample/Textures/Dirt steel/Dirt steel 1/dirt_steel_1_height.png
+  artifactKey: Guid(d0706bef49db4e140907c441772ea557) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sample/Textures/Dirt steel/Dirt steel 1/dirt_steel_1_height.png using Guid(d0706bef49db4e140907c441772ea557) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '21ca3bfcef9bedb773bb9ef3dcec6416') in 0.067820 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000600 seconds.
+  path: Assets/Sample/Textures/Dirt steel/Dirt steel 1/dirt_steel_1_specularLevel.png
+  artifactKey: Guid(a3c78079406e1a84d83a5306051963c4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sample/Textures/Dirt steel/Dirt steel 1/dirt_steel_1_specularLevel.png using Guid(a3c78079406e1a84d83a5306051963c4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '637b336600b752e69844195c664b2785') in 0.053603 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000348 seconds.
+  path: Assets/Sample/Textures/Dirt steel/Dirt steel 2/dirt_steel_2_normal.png
+  artifactKey: Guid(18f1a8c42042245439aae599c9dd1ad6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sample/Textures/Dirt steel/Dirt steel 2/dirt_steel_2_normal.png using Guid(18f1a8c42042245439aae599c9dd1ad6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '576bef514c91bc06d34975d3089210d6') in 0.114067 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000273 seconds.
+  path: Assets/Sample/Textures/Dirt steel/Dirt steel 1/dirt_steel_1_normal.png
+  artifactKey: Guid(268d86e2e7a4f5c43a250e11dbd712dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sample/Textures/Dirt steel/Dirt steel 1/dirt_steel_1_normal.png using Guid(268d86e2e7a4f5c43a250e11dbd712dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0359929675f01eb5e5bd010044bc8098') in 0.071810 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000314 seconds.
+  path: Assets/Sample/Textures/Dirt steel/Dirt steel 1/dirt_steel_1_baseColor.png
+  artifactKey: Guid(f10c0f0c34900c4468669a4a4522f9ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sample/Textures/Dirt steel/Dirt steel 1/dirt_steel_1_baseColor.png using Guid(f10c0f0c34900c4468669a4a4522f9ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '932f4f8b4e4dd5f1f8b9dcf879680c43') in 0.056032 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000324 seconds.
+  path: Assets/Foliage2D/Gizmos/circle.png
+  artifactKey: Guid(67bec78d84aca814a9b2f5edb5853059) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Foliage2D/Gizmos/circle.png using Guid(67bec78d84aca814a9b2f5edb5853059) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ee7272445fa38317c42dd07b617fdfb5') in 0.052061 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000109 seconds.
+  path: Assets/Foliage2D/Example/Textures/Circle_01.png
+  artifactKey: Guid(c1b4433b801c08f4e900211628a980be) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Foliage2D/Example/Textures/Circle_01.png using Guid(c1b4433b801c08f4e900211628a980be) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd339befd236b7c95c631c9d3f876c491') in 0.051094 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000360 seconds.
+  path: Assets/Foliage2D/Gizmos/dot-minus.png
+  artifactKey: Guid(3e6d0c4f43abbd14f932dcfbd28f2e44) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Foliage2D/Gizmos/dot-minus.png using Guid(3e6d0c4f43abbd14f932dcfbd28f2e44) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd25f3c6d1aa80f01502a602d1c19025a') in 0.033629 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000271 seconds.
+  path: Assets/Foliage2D/Example/Textures/Cloud_02.png
+  artifactKey: Guid(4783ca8d7454a544f988743e71801d4e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Foliage2D/Example/Textures/Cloud_02.png using Guid(4783ca8d7454a544f988743e71801d4e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '118dc2db35ab3c99053a874037c2f616') in 0.034477 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000295 seconds.
+  path: Assets/Sample/Textures/Dirt steel/Dirt steel 2/dirt_steel_2_metallic.png
+  artifactKey: Guid(a8ed12b88a85cc14e8b39da050053a30) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sample/Textures/Dirt steel/Dirt steel 2/dirt_steel_2_metallic.png using Guid(a8ed12b88a85cc14e8b39da050053a30) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '85ea7f8e38f6812e43cc6cbdcf9bfdf1') in 0.041197 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000276 seconds.
+  path: Assets/Foliage2D/Example/Textures/Cloud_01.png
+  artifactKey: Guid(8414a1bc2ba348d47997f037a7b9bc09) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Foliage2D/Example/Textures/Cloud_01.png using Guid(8414a1bc2ba348d47997f037a7b9bc09) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'efa307325e70fa67f74ed7fcfd56050d') in 0.037620 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000315 seconds.
+  path: Assets/Sample/Textures/Dirt steel/Dirt steel 2/dirt_steel_2_ambientOcclusion.png
+  artifactKey: Guid(fe7d934c2ef5aec478fbd6beaec35717) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sample/Textures/Dirt steel/Dirt steel 2/dirt_steel_2_ambientOcclusion.png using Guid(fe7d934c2ef5aec478fbd6beaec35717) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ac8f99af62192716899b8d15354c0019') in 0.040388 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000347 seconds.
+  path: Assets/Sample/Textures/Dirt steel/Dirt steel 1/dirt_steel_1_ambientOcclusion.png
+  artifactKey: Guid(f687394d33f4a8a49a55e64d2e773862) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sample/Textures/Dirt steel/Dirt steel 1/dirt_steel_1_ambientOcclusion.png using Guid(f687394d33f4a8a49a55e64d2e773862) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7e39f8e1b008a73205371c8404b6c675') in 0.046230 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000375 seconds.
+  path: Assets/Foliage2D/Gizmos/circle_selected.png
+  artifactKey: Guid(adb4a8c92ea259a4fb892688cd15b4ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Foliage2D/Gizmos/circle_selected.png using Guid(adb4a8c92ea259a4fb892688cd15b4ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e57fd9d00ff2a02dc997b791fb76b154') in 0.039209 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000344 seconds.
+  path: Assets/Sample/Textures/Dirt steel/Dirt steel 2/dirt_steel_2_baseColor.png
+  artifactKey: Guid(535cfea6065403e45a76b25f5c02d351) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sample/Textures/Dirt steel/Dirt steel 2/dirt_steel_2_baseColor.png using Guid(535cfea6065403e45a76b25f5c02d351) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bb0589bd83cc0c4ad73f397c71cd757f') in 0.043685 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000306 seconds.
+  path: Assets/Foliage2D/Example/Textures/Decoration_02.png
+  artifactKey: Guid(6e9b77cbaae265844a724dfe095e916c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Foliage2D/Example/Textures/Decoration_02.png using Guid(6e9b77cbaae265844a724dfe095e916c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b076990d21cceded2fc99696b095621e') in 0.039514 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000311 seconds.
+  path: Assets/Sample/Textures/Dirt steel/Dirt steel 2/dirt_steel_2_height.png
+  artifactKey: Guid(dbbf09c0ca011264c8cadf9914507c51) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sample/Textures/Dirt steel/Dirt steel 2/dirt_steel_2_height.png using Guid(dbbf09c0ca011264c8cadf9914507c51) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd184b1c661dbdc79d8844030bf5dfbdb') in 0.041958 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000328 seconds.
+  path: Assets/Foliage2D/Example/Textures/Decoration_01.png
+  artifactKey: Guid(1844ee793cf1ec24aa769d1efb03ffc8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Foliage2D/Example/Textures/Decoration_01.png using Guid(1844ee793cf1ec24aa769d1efb03ffc8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2f8557016f088b65f0880d25b27d8d57') in 0.037126 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1020.149826 seconds.
+  path: Assets/Foliage2D/Example/Textures/FlowerTextures/Flower_01.png
+  artifactKey: Guid(c94400da8ae7a9e418af59dd1515a5ae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Foliage2D/Example/Textures/FlowerTextures/Flower_01.png using Guid(c94400da8ae7a9e418af59dd1515a5ae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '11b0e307f45cb8dadfb88318cd674c8c') in 0.031814 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000325 seconds.
+  path: Assets/Foliage2D/Example/Textures/FlowerTextures/Flower_03.png
+  artifactKey: Guid(334cb10cfc4bc50479d13d0f8c9719c5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Foliage2D/Example/Textures/FlowerTextures/Flower_03.png using Guid(334cb10cfc4bc50479d13d0f8c9719c5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1a195785f3c588eecee047a269a7bffc') in 0.030517 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000530 seconds.
+  path: Assets/Foliage2D/Example/Textures/FlowerTextures/Flower_02.png
+  artifactKey: Guid(4a276e645f7daed458ff26c5d4b1edde) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Foliage2D/Example/Textures/FlowerTextures/Flower_02.png using Guid(4a276e645f7daed458ff26c5d4b1edde) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '19f7992d2621aff2034c2169c16cefc7') in 0.026878 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.045459 seconds.
+  path: Assets/Foliage2D/Example/Textures/FlowerTextures/Flower_04.png
+  artifactKey: Guid(5478c391b41d3c84faf5b266f0b47484) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Foliage2D/Example/Textures/FlowerTextures/Flower_04.png using Guid(5478c391b41d3c84faf5b266f0b47484) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '641aab71bef38d47e04c67362a17f21e') in 0.023709 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000372 seconds.
+  path: Assets/Foliage2D/Example/Textures/Fog_01.png
+  artifactKey: Guid(4a545b8a392d5b046b58b3e9379c429c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Foliage2D/Example/Textures/Fog_01.png using Guid(4a545b8a392d5b046b58b3e9379c429c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e80c4d4bdc255fabf70d3a37af920e37') in 0.051673 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000385 seconds.
+  path: Assets/Foliage2D/Example/Textures/Fog_02.png
+  artifactKey: Guid(13be1100d35f5dc4c81558fdac6fd0b5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Foliage2D/Example/Textures/Fog_02.png using Guid(13be1100d35f5dc4c81558fdac6fd0b5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5f1ad19970f70ada3d09bf430761c157') in 0.083723 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.258157 seconds.
+  path: Assets/Foliage2D/Example/Textures/GrassTextures/Grass_01.png
+  artifactKey: Guid(0f1ccf04ac666ed44b8bc66c113c35e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Foliage2D/Example/Textures/GrassTextures/Grass_01.png using Guid(0f1ccf04ac666ed44b8bc66c113c35e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4428b8fde47511d9027467ec1839772d') in 0.024212 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000320 seconds.
+  path: Assets/Foliage2D/Example/Textures/GrassTextures/Grass_02.png
+  artifactKey: Guid(2ab2dcd93cbe4fc42b5892c5af285f28) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Foliage2D/Example/Textures/GrassTextures/Grass_02.png using Guid(2ab2dcd93cbe4fc42b5892c5af285f28) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9e2a20a0bea7aa842a13543d4fe8de9a') in 0.024621 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 4.866747 seconds.
+  path: Assets/Foliage2D/Example/Textures/Ground_01.png
+  artifactKey: Guid(a839dbca549bc2a459b1eafde0741d82) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Foliage2D/Example/Textures/Ground_01.png using Guid(a839dbca549bc2a459b1eafde0741d82) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3dc8c90789418f54c132ae5d95315df4') in 0.040167 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000368 seconds.
+  path: Assets/Foliage2D/Example/Textures/Ground_02.png
+  artifactKey: Guid(3cbdcc647285aa545ba7ccac862e6154) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Foliage2D/Example/Textures/Ground_02.png using Guid(3cbdcc647285aa545ba7ccac862e6154) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '697fa3cff213881099fade33ba6054f6') in 0.045828 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000344 seconds.
+  path: Assets/Foliage2D/Example/Textures/Hill_02.png
+  artifactKey: Guid(38c90279bb911674d958b847d37d9923) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Foliage2D/Example/Textures/Hill_02.png using Guid(38c90279bb911674d958b847d37d9923) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ea9f1046edda110eddea2022fc8cfd2e') in 0.044825 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000264 seconds.
+  path: Assets/Foliage2D/Example/Textures/Hill_01.png
+  artifactKey: Guid(0688b2c29bd2c5c43adbd650a14a86d1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Foliage2D/Example/Textures/Hill_01.png using Guid(0688b2c29bd2c5c43adbd650a14a86d1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b3843c6b895a2670c52af13ac93091d3') in 0.049108 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000364 seconds.
+  path: Assets/Foliage2D/Example/Textures/Mountain_02.png
+  artifactKey: Guid(4454c7542719339459c26f97528aa9b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Foliage2D/Example/Textures/Mountain_02.png using Guid(4454c7542719339459c26f97528aa9b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd4a9484c9e0b0ea81989fd5336dd498a') in 0.068004 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000309 seconds.
+  path: Assets/Foliage2D/Example/Textures/Mountain_01.png
+  artifactKey: Guid(f25ac5b87062dc34a8e99da463387a8b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Foliage2D/Example/Textures/Mountain_01.png using Guid(f25ac5b87062dc34a8e99da463387a8b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '12befee614b9fd305bace2122be5ceb3') in 0.065118 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 95.778041 seconds.
+  path: Assets/Scenes/Alternate.unity
+  artifactKey: Guid(29fac75a99fc6f746831a6f3ecca753f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Alternate.unity using Guid(29fac75a99fc6f746831a6f3ecca753f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7fe4a37c1b05f0b516dc605a081cdd4a') in 0.018035 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001706 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.38 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.486 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.40 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1862 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 190.8 MB.
+System memory in use after: 190.8 MB.
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 2830.
+Total: 3.824800 ms (FindLiveObjects: 0.284100 ms CreateObjectMapping: 0.141300 ms MarkObjects: 3.258700 ms  DeleteObjects: 0.139100 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001412 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.52 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.346 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.37 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1828 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 189.7 MB.
+System memory in use after: 189.7 MB.
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 2834.
+Total: 3.915800 ms (FindLiveObjects: 0.326300 ms CreateObjectMapping: 0.169700 ms MarkObjects: 3.258100 ms  DeleteObjects: 0.160000 ms)
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file

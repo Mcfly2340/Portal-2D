@@ -64,6 +64,10 @@
     <Compile Include="Assets\Scripts\BringThroughScenesCameraMain.cs" />
     <Compile Include="Assets\Scripts\BringThroughScenesOrangePortal.cs" />
     <Compile Include="Assets\Scripts\BringThroughScenesGreenPortal.cs" />
+    <Compile Include="Assets\Scripts\EquipDevice.cs" />
+    <Compile Include="Assets\Scripts\DoorWay.cs" />
+    <Compile Include="Assets\Scripts\LevelLoader.cs" />
+    <Compile Include="Assets\Scripts\Menu.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

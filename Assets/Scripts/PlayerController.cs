@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public float jumpForce;
     public Vector2 jumpHeight;
     private bool isOnGround;
+    public Transform playerSpawnPos;
     //facing direction player
     bool isFacingRight = true;
 
@@ -23,7 +24,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        this.transform.position = new Vector3(0, 0, 0);
+        this.transform.position = new Vector3(playerSpawnPos.transform.position.x, playerSpawnPos.transform.position.y,0);
         //rb.GetComponent<Rigidbody2D>();
     }
 

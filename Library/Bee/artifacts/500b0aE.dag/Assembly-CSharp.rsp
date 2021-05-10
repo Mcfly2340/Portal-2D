@@ -332,7 +332,11 @@
 "Assets/Scripts/BringThroughScenesGreenPortal.cs"
 "Assets/Scripts/BringThroughScenesOrangePortal.cs"
 "Assets/Scripts/BringThroughScenesPlayer.cs"
+"Assets/Scripts/DoorWay.cs"
+"Assets/Scripts/EquipDevice.cs"
 "Assets/Scripts/GameManager.cs"
+"Assets/Scripts/LevelLoader.cs"
+"Assets/Scripts/Menu.cs"
 "Assets/Scripts/PlayerController.cs"
 "Assets/Scripts/Portal.cs"
 -langversion:8.0

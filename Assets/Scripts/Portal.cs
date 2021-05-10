@@ -6,11 +6,17 @@ using UnityEngine.SceneManagement;
 public class Portal : MonoBehaviour
 {
     //enviroment asssets
-    public Vector3 mousepos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    public Vector3 mousepos;
     //Portal assets:
     public Transform portalBlueSpawnPos, portalOrangeSpawnPos;
     public GameObject portalBlue, portalOrange;
     public GameObject portalGreen;
+
+    //[SerializeField]
+    public bool portalIsEquiped = false;
+    public bool isCharged = false;
+    public AudioSource CancelShootSound;
+    public AudioSource ShootSound;
     //Player assets
     public GameObject Player;
     public Collider2D PlayerColl;
@@ -28,23 +34,38 @@ public class Portal : MonoBehaviour
         DontDestroyOnLoad(portalGreen);
         DontDestroyOnLoad(Player);
         DontDestroyOnLoad(Camera.main);
+        mousepos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
 
     void Update()
     {
-        mousepos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -1));
-        if (Input.GetButtonDown("Fire1"))//press left mouse button
+        if (portalIsEquiped)
         {
-            StartCoroutine(ShootBlue());
+            mousepos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -1));
+            if (Input.GetButtonDown("Fire1"))//press left mouse button
+            {
+                StartCoroutine(ShootBlue());
+                ShootSound.Play();
+            }
+            else if (Input.GetButtonDown("Fire2"))//press right mouse button
+            {
+                StartCoroutine(ShootOrange());
+                ShootSound.Play();
+            }
+            else if (Input.GetKeyDown(KeyCode.F))//press f button
+            {
+                StartCoroutine(ShootGreen());
+                ShootSound.Play();
+            }
         }
-        else if (Input.GetButtonDown("Fire2"))//press right mouse button
+        else
         {
-            StartCoroutine(ShootOrange());
+            if (Input.GetButtonDown("Fire1") || Input.GetButtonDown("Fire2") || Input.GetKeyDown(KeyCode.F))//press left mouse button
+            {
+                CancelShootSound.Play();
+            }
         }
-        else if (Input.GetKeyDown(KeyCode.F))//press f button
-        {
-            StartCoroutine(ShootGreen());
-        }
+        
     }
     
     void Shoot()

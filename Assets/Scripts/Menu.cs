@@ -5,29 +5,73 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Animator transition;
+    public GameObject pauseMenuUI;
 
-    // Update is called once per frame
-    void Update()
+    public float transitionTime = 1f;
+
+    public static bool isPaused = false;
+    public static bool startOverPressed = false;
+
+
+
+    private void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (isPaused)
+            {
+                Resume();
+            }
+            else
+            {
+                Pause();
+            }
+        }
+    }
+    public void Pause()
+    {
+        pauseMenuUI.SetActive(true);
+        Time.timeScale = 0f;
+        isPaused = true;
+        GetComponent<ControlsPanel>().Panel();
+    }
+    public void Resume()
+    {
+        pauseMenuUI.SetActive(false);
+        Time.timeScale = 1f;
+        isPaused = false;
     }
 
     public void PlayButton()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        StartCoroutine(WaitForSeconds(SceneManager.GetActiveScene().buildIndex + 1));
+    }
+    public void ToTitleButton()
+    {
+        StartCoroutine(WaitForSeconds(0));
+        Time.timeScale = 1f;
+    }
+    public void StartOver()
+    {
+        Resume();
+        WaitForStartOverSeconds(1);
+        StartCoroutine(WaitForSeconds(SceneManager.GetActiveScene().buildIndex));
     }
     public void QuitButton()
     {
         Debug.Log("Exiting Application...");
         Application.Quit();
     }
-    public void StartOver()
+    
+    IEnumerator WaitForSeconds(int levelIndex)
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        transition.SetTrigger("Start");
+        yield return new WaitForSeconds(transitionTime);
+        SceneManager.LoadScene(levelIndex);
+    }
+    IEnumerator WaitForStartOverSeconds(int time)
+    {
+        yield return new WaitForSeconds(time);
     }
 }

@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class EquipDevice : MonoBehaviour
 {
-    public Portal portal;
+    public Portal portalGreen;
+    public Portal portalBlue;
+    public Portal portalOrange;
     void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("yes");
-        portal.portalIsEquiped = true;
+        portalGreen.portalIsEquiped = true;
+        portalBlue.portalIsEquiped = true;
+        portalOrange.portalIsEquiped = true;
         Destroy(gameObject);
     }
 }

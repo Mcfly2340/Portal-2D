@@ -13,7 +13,7 @@ TagManager:
   - UI
   - UP
   - DOWN
-  - 
+  - Background
   - 
   - 
   - 
@@ -43,4 +43,7 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Foreground
+    uniqueID: 640552375
     locked: 0

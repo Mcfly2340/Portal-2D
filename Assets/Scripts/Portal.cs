@@ -7,16 +7,19 @@ public class Portal : MonoBehaviour
 {
     //enviroment asssets
     public Vector3 mousepos;
+
     //Portal assets:
     public Transform portalBlueSpawnPos, portalOrangeSpawnPos;
+
     public GameObject portalBlue, portalOrange;
     public GameObject portalGreen;
 
-    //[SerializeField]
     public bool portalIsEquiped = false;
     public bool isCharged = false;
+
     public AudioSource CancelShootSound;
     public AudioSource ShootSound;
+
     //Player assets
     public GameObject Player;
     public Collider2D PlayerColl;
@@ -32,16 +35,15 @@ public class Portal : MonoBehaviour
         DontDestroyOnLoad(portalBlue);
         DontDestroyOnLoad(portalOrange);
         DontDestroyOnLoad(portalGreen);
-        DontDestroyOnLoad(Player);
-        DontDestroyOnLoad(Camera.main);
-        mousepos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        
     }
 
     void Update()
     {
+        
         if (portalIsEquiped)
         {
-            mousepos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -1));
+            mousepos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.z));
             if (Input.GetButtonDown("Fire1"))//press left mouse button
             {
                 StartCoroutine(ShootBlue());
@@ -52,7 +54,7 @@ public class Portal : MonoBehaviour
                 StartCoroutine(ShootOrange());
                 ShootSound.Play();
             }
-            else if (Input.GetKeyDown(KeyCode.F))//press f button
+            else if (Input.GetKeyDown(KeyCode.Mouse2))//press f button
             {
                 StartCoroutine(ShootGreen());
                 ShootSound.Play();
@@ -60,12 +62,11 @@ public class Portal : MonoBehaviour
         }
         else
         {
-            if (Input.GetButtonDown("Fire1") || Input.GetButtonDown("Fire2") || Input.GetKeyDown(KeyCode.F))//press left mouse button
+            if (Input.GetButtonDown("Fire1") || Input.GetButtonDown("Fire2") || Input.GetKeyDown(KeyCode.Mouse2))//press left mouse button
             {
                 CancelShootSound.Play();
             }
         }
-        
     }
     
     void Shoot()
@@ -86,34 +87,37 @@ public class Portal : MonoBehaviour
         }
     }
     IEnumerator ShootBlue()
-    {
-        RaycastHit2D hitInfo = Physics2D.Raycast(firePoint.position, Camera.main.ScreenToWorldPoint(Input.mousePosition));
-
-        lineRenderer.startColor = Color.blue;
-        lineRenderer.endColor = Color.blue;
+    {//yellow raycast
+        Vector3 endPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        RaycastHit2D hitInfo = Physics2D.Raycast(firePoint.position, endPos - firePoint.position);
+        
 
         if (hitInfo)
         {
-            Debug.Log(hitInfo.transform.name);
-            //lineRenderer.SetPosition(0, firePoint.position);
-            //lineRenderer.SetPosition(1, hitInfo.point);
+            //blue line
+            lineRenderer.startColor = Color.blue;
+            lineRenderer.endColor = Color.blue;
             lineRenderer.SetPosition(0, firePoint.position);
-            lineRenderer.SetPosition(1, Camera.main.ScreenToWorldPoint(Input.mousePosition));
+            lineRenderer.SetPosition(1, endPos);
 
             if (hitInfo.transform.name == "Character" || hitInfo.transform.name == "BluePortal" || hitInfo.transform.name == "OrangePortal" || hitInfo.transform.name == "GreenPortal")
             {
                 Physics2D.IgnoreCollision(PlayerColl, PlayerColl, true);
             }
-            else if (Player.transform.rotation.eulerAngles.y < 1 && transform.rotation.eulerAngles.y > -1)//if going right
+            else if (hitInfo.transform.gameObject.layer == LayerMask.NameToLayer("Environment"))
             {
-                portalBlue.transform.position = new Vector3(hitInfo.transform.position.x - 1, mousepos.y);
-                portalBlue.transform.rotation = Quaternion.Euler(Vector3.forward * 0);
+                if (Player.transform.rotation.eulerAngles.y < 1 && Player.transform.rotation.eulerAngles.y > -1)//if facing right (normally)
+                {
+                    portalBlue.transform.position = new Vector3(hitInfo.transform.position.x - 1, mousepos.y);
+                    portalBlue.transform.rotation = Quaternion.Euler(Vector3.forward * 0);
+                }
+                else //if facing left
+                {
+                    portalBlue.transform.position = new Vector3(hitInfo.transform.position.x + 1, mousepos.y);
+                    portalBlue.transform.rotation = Quaternion.Euler(Vector3.forward * 180);
+                }
             }
-            else
-            {
-                portalBlue.transform.position = new Vector3(hitInfo.transform.position.x + 1, mousepos.y);
-                portalBlue.transform.rotation = Quaternion.Euler(Vector3.forward * 180);
-            }
+            
             if (hitInfo.transform.gameObject.layer == LayerMask.NameToLayer("UP"))
             {
                 portalBlue.transform.position = new Vector3(mousepos.x, hitInfo.transform.position.y - 1f);
@@ -123,14 +127,11 @@ public class Portal : MonoBehaviour
                 portalBlue.transform.position = new Vector3(mousepos.x, hitInfo.transform.position.y + 1f);
                 portalBlue.transform.rotation = Quaternion.Euler(Vector3.forward * -90);
             }
-            else
-            {
-            }
         }
         else
         {//if hit nothing then stretch 100x to the right
             lineRenderer.SetPosition(0, firePoint.position);
-            lineRenderer.SetPosition(1, firePoint.position + firePoint.right * 100);
+            lineRenderer.SetPosition(1, firePoint.position + Camera.main.ScreenToWorldPoint(Input.mousePosition) * 100);
         }
         //enable shooting line
         lineRenderer.enabled = true;
@@ -141,18 +142,18 @@ public class Portal : MonoBehaviour
     }
     IEnumerator ShootOrange()
     {
-        RaycastHit2D hitInfo = Physics2D.Raycast(firePoint.position, Camera.main.ScreenToWorldPoint(Input.mousePosition));
+        Vector3 endPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        RaycastHit2D hitInfo = Physics2D.Raycast(firePoint.position, endPos - firePoint.position);
 
         //color to orange
         lineRenderer.startColor = new Color(255, 0, 0, 255);
         lineRenderer.endColor = new Color(255, 0, 0, 255);
+        lineRenderer.SetPosition(0, firePoint.position);
+        lineRenderer.SetPosition(1, endPos);
 
         if (hitInfo)
         {
-            //lineRenderer.SetPosition(0, firePoint.position);
-            //lineRenderer.SetPosition(1, hitInfo.point);
-            lineRenderer.SetPosition(0, firePoint.position);
-            lineRenderer.SetPosition(1, Camera.main.ScreenToWorldPoint(Input.mousePosition));
+            
 
             if (hitInfo.transform.name == "Character" || hitInfo.transform.name == "BluePortal" || hitInfo.transform.name == "OrangePortal" || hitInfo.transform.name == "GreenPortal")
             {
@@ -194,18 +195,16 @@ public class Portal : MonoBehaviour
     }
     IEnumerator ShootGreen()
     {
-        RaycastHit2D hitInfo = Physics2D.Raycast(firePoint.position, Camera.main.ScreenToWorldPoint(Input.mousePosition));
+        Vector3 endPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        RaycastHit2D hitInfo = Physics2D.Raycast(firePoint.position, endPos - firePoint.position);
 
         lineRenderer.startColor = Color.green;
         lineRenderer.endColor = Color.green;
+        lineRenderer.SetPosition(0, firePoint.position);
+        lineRenderer.SetPosition(1, endPos);
 
         if (hitInfo)
         {
-            
-            //lineRenderer.SetPosition(0, firePoint.position);
-            //lineRenderer.SetPosition(1, hitInfo.point);
-            lineRenderer.SetPosition(0, firePoint.position);
-            lineRenderer.SetPosition(1, Camera.main.ScreenToWorldPoint(Input.mousePosition));
 
             if (hitInfo.transform.name == "Character")
             {
@@ -243,18 +242,23 @@ public class Portal : MonoBehaviour
         }
         else if (gameObject.name == "GreenPortal")
         {
+            DontDestroyOnLoad(Player);
             Scene currentScene = SceneManager.GetActiveScene();
             int buildIndex = currentScene.buildIndex;
             Scene sceneLoaded = SceneManager.GetActiveScene();
             switch (buildIndex)
             {
-
-                case 0:
+                case 0://main menu
                     SceneManager.LoadScene(sceneLoaded.buildIndex + 1);
-                    
                     break;
-                case 1:
+                case 1://scene 1
+                    SceneManager.LoadScene(sceneLoaded.buildIndex + 1);
+                    break;
+                case 2://scene 1 alternate
                     SceneManager.LoadScene(sceneLoaded.buildIndex - 1);
+                    break;
+                case 3:
+                    SceneManager.LoadScene(sceneLoaded.buildIndex + 1);
                     break;
             }
         }

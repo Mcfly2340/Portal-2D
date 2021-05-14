@@ -56,18 +56,18 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\DoorWay.cs" />
     <Compile Include="Assets\Scripts\BringThroughScenesPlayer.cs" />
     <Compile Include="Assets\Scripts\BringThroughScenesBluePortal.cs" />
     <Compile Include="Assets\Scripts\Portal.cs" />
+    <Compile Include="Assets\Scripts\LevelLoader.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
-    <Compile Include="Assets\Scripts\GameManager.cs" />
-    <Compile Include="Assets\Scripts\BringThroughScenesCameraMain.cs" />
+    <Compile Include="Assets\Scripts\EquipDevice.cs" />
+    <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\BringThroughScenesOrangePortal.cs" />
     <Compile Include="Assets\Scripts\BringThroughScenesGreenPortal.cs" />
-    <Compile Include="Assets\Scripts\EquipDevice.cs" />
-    <Compile Include="Assets\Scripts\DoorWay.cs" />
-    <Compile Include="Assets\Scripts\LevelLoader.cs" />
     <Compile Include="Assets\Scripts\Menu.cs" />
+    <Compile Include="Assets\Scripts\ControlsPanel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

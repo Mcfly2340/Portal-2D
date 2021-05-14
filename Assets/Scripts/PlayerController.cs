@@ -9,22 +9,24 @@ public class PlayerController : MonoBehaviour
 
     public float positionRadius;
     public float speed = 1;
-    public LayerMask ground;
-    public Transform playerPos;
     public float jumpForce;
-    public Vector2 jumpHeight;
-    private bool isOnGround;
-    public Transform playerSpawnPos;
+    [SerializeField] private Collider2D playerCollider;
+    [SerializeField] private LayerMask groundLayer;
+    public static GameObject player;
     //facing direction player
     bool isFacingRight = true;
 
+    public bool isCrouching = false;
 
     public float maxVelocity = 80;
+
+
+    private static GameObject instance;
 
     // Start is called before the first frame update
     void Start()
     {
-        this.transform.position = new Vector3(playerSpawnPos.transform.position.x, playerSpawnPos.transform.position.y,0);
+        DuplicationCorrection();
         //rb.GetComponent<Rigidbody2D>();
     }
 
@@ -56,17 +58,45 @@ public class PlayerController : MonoBehaviour
         {
             flipPlayer();
         }
+        Crouching();
     }
-
-    private void Jump()
+    public void DuplicationCorrection()
     {
-        isOnGround = Physics2D.OverlapCircle(playerPos.position, positionRadius, ground);
-        if (isOnGround && Input.GetKeyDown(KeyCode.Space))
+        if (instance != null && instance != this)
         {
-            rb.velocity = Vector2.up * jumpForce;
+            Destroy(gameObject);
+            return;
+        }
+        instance = gameObject;
+    }
+    private void Crouching()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            isCrouching = true;
+            GetComponent<CapsuleCollider2D>().size = new Vector2(1, this.transform.localScale.y / 2);
+            this.transform.localScale = new Vector3(1, this.transform.localScale.y / 2, 0.30f);
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            isCrouching = false;
+            GetComponent<CapsuleCollider2D>().size = new Vector3(1, 2, 0.30f);
+            this.transform.localScale = new Vector3(1, 1, 0.30f);
         }
     }
-
+    private void Jump()
+    {
+        if (IsGrounded() && !isCrouching && Input.GetKey(KeyCode.Space))
+        {
+            rb.velocity = Vector3.up * jumpForce;
+        }
+    }
+    private bool IsGrounded()
+    {
+        float extraHeight = .01f;
+        RaycastHit2D raycastHit = Physics2D.Raycast(playerCollider.bounds.center, Vector2.down, playerCollider.bounds.extents.y + extraHeight, groundLayer);
+        return raycastHit.collider != null;
+    }
     void flipPlayer()
     {
         isFacingRight = !isFacingRight;

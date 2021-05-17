@@ -35,12 +35,11 @@ public class Portal : MonoBehaviour
         DontDestroyOnLoad(portalBlue);
         DontDestroyOnLoad(portalOrange);
         DontDestroyOnLoad(portalGreen);
-        
+        DontDestroyOnLoad(Player);
     }
 
     void Update()
     {
-        
         if (portalIsEquiped)
         {
             mousepos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.z));

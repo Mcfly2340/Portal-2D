@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class BringThroughScenesPlayer : MonoBehaviour
 {
-    [SerializeField] private GameObject player;
-    [SerializeField] private GameObject playerpos;
     private static GameObject instance;
     void Start()
     {
@@ -15,6 +13,5 @@ public class BringThroughScenesPlayer : MonoBehaviour
             return;
         }
         instance = gameObject;
-        gameObject.transform.position = playerpos.transform.position;
     }
 }

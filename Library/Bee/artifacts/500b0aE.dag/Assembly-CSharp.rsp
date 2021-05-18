@@ -298,6 +298,9 @@
 -r:"C:/UnityProjects/2021.1.0f1/Editor/Data/NetStandard/Extensions/2.0.0/System.Numerics.Vectors.dll"
 -r:"C:/UnityProjects/2021.1.0f1/Editor/Data/NetStandard/Extensions/2.0.0/System.Runtime.InteropServices.WindowsRuntime.dll"
 -r:"C:/UnityProjects/2021.1.0f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll"
+-r:"C:/UnityProjects/Portal-2D/Library/PackageCache/com.unity.cinemachine@2.7.3/Runtime/ThirdParty/clipper_library.dll"
+-r:"Library/Bee/artifacts/500b0aE.dag/Cinemachine.ref.dll"
+-r:"Library/Bee/artifacts/500b0aE.dag/com.unity.cinemachine.editor.ref.dll"
 -r:"Library/Bee/artifacts/500b0aE.dag/PsdPlugin.ref.dll"
 -r:"Library/Bee/artifacts/500b0aE.dag/Unity.2D.Animation.Editor.ref.dll"
 -r:"Library/Bee/artifacts/500b0aE.dag/Unity.2D.Animation.Runtime.ref.dll"
@@ -352,6 +355,7 @@
 "Assets/Scripts/Menu.cs"
 "Assets/Scripts/PlayerController.cs"
 "Assets/Scripts/Portal.cs"
+"Assets/StartCutscene.cs"
 -langversion:8.0
 
 /deterministic

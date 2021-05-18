@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637568304958010063
-    m_Hash: 3622007923
+      ticks: 637569220753471449
+    m_Hash: 3553483497
   m_LockFileStatus:
     m_FilePath: C:/UnityProjects/Portal-2D/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637568304975667119
-    m_Hash: 3813563189
+      ticks: 637569220778502252
+    m_Hash: 2405479844
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
@@ -94,6 +94,7 @@ m_ResolvedPackages:
     - 5.0.2
     - 5.0.3
     - 5.0.4
+    - 5.0.5
     - 6.0.0-pre.1
     - 6.0.0-pre.2
     - 6.0.1
@@ -101,11 +102,12 @@ m_ResolvedPackages:
     compatible:
     - 5.0.3
     - 5.0.4
+    - 5.0.5
     - 6.0.0-pre.1
     - 6.0.0-pre.2
     - 6.0.1
     - 6.0.3
-    verified: 5.0.4
+    verified: 5.0.5
   dependencies:
   - name: com.unity.2d.common
     version: 4.0.3
@@ -478,16 +480,18 @@ m_ResolvedPackages:
     - 5.0.2
     - 5.1.0
     - 5.1.1
+    - 5.1.2
     - 6.0.0-pre.1
     - 6.0.0-pre.2
     - 6.0.0
     compatible:
     - 5.1.0
     - 5.1.1
+    - 5.1.2
     - 6.0.0-pre.1
     - 6.0.0-pre.2
     - 6.0.0
-    verified: 5.1.1
+    verified: 5.1.2
   dependencies:
   - name: com.unity.mathematics
     version: 1.1.0
@@ -597,6 +601,125 @@ m_ResolvedPackages:
     type: 
     url: 
     revision: 
+    path: 
+  unityLifecycle:
+    version: 
+    nextVersion: 
+- packageId: com.unity.cinemachine@2.7.3
+  testable: 0
+  isDirectDependency: 1
+  version: 2.7.3
+  source: 1
+  resolvedPath: C:\UnityProjects\Portal-2D\Library\PackageCache\com.unity.cinemachine@2.7.3
+  assetPath: Packages/com.unity.cinemachine
+  name: com.unity.cinemachine
+  displayName: Cinemachine
+  author:
+    name: 
+    email: 
+    url: 
+  category: cinematography
+  type: 
+  description: "Smart camera tools for passionate creators. \n\nNew starting from
+    2.7.1: Are you looking for the Cinemachine menu? It has moved to the GameObject
+    menu.\n\nIMPORTANT NOTE: If you are upgrading from the legacy Asset Store version
+    of Cinemachine, delete the Cinemachine asset from your project BEFORE installing
+    this version from the Package Manager."
+  status: 4
+  errors: []
+  versions:
+    all:
+    - 2.1.11-beta.1
+    - 2.1.12
+    - 2.1.13
+    - 2.2.0
+    - 2.2.7
+    - 2.2.8
+    - 2.2.9
+    - 2.2.10-preview.3
+    - 2.2.10-preview.4
+    - 2.3.1
+    - 2.3.3
+    - 2.3.4
+    - 2.3.5-preview.3
+    - 2.4.0-preview.3
+    - 2.4.0-preview.4
+    - 2.4.0-preview.6
+    - 2.4.0-preview.7
+    - 2.4.0-preview.8
+    - 2.4.0-preview.9
+    - 2.4.0-preview.10
+    - 2.4.0
+    - 2.5.0
+    - 2.6.0-preview.2
+    - 2.6.0-preview.3
+    - 2.6.0-preview.5
+    - 2.6.0-preview.8
+    - 2.6.0
+    - 2.6.1-preview.6
+    - 2.6.1
+    - 2.6.2-preview.1
+    - 2.6.2
+    - 2.6.3-preview.2
+    - 2.6.3
+    - 2.6.4
+    - 2.7.1
+    - 2.7.2
+    - 2.7.3
+    - 2.8.0-exp.1
+    - 2.8.0-exp.2
+    - 2.8.0-pre.1
+    compatible:
+    - 2.7.2
+    - 2.7.3
+    - 2.8.0-exp.1
+    - 2.8.0-exp.2
+    - 2.8.0-pre.1
+    verified: 2.7.3
+  dependencies: []
+  resolvedDependencies: []
+  keywords:
+  - camera
+  - follow
+  - rig
+  - fps
+  - cinematography
+  - aim
+  - orbit
+  - cutscene
+  - cinematic
+  - collision
+  - freelook
+  - cinemachine
+  - compose
+  - composition
+  - dolly
+  - track
+  - clearshot
+  - noise
+  - framing
+  - handheld
+  - lens
+  - impulse
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+  hasRegistry: 1
+  hideInEditor: 1
+  entitlements:
+    isAllowed: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 637523735910000000
+  documentationUrl: 
+  hasRepository: 1
+  repository:
+    type: git
+    url: git+https://github.com/Unity-Technologies/com.unity.cinemachine.git
+    revision: 51de586ba6f144b9e90ff52a72d14fb208acf1a8
     path: 
   unityLifecycle:
     version: 
@@ -3943,9 +4066,24 @@ m_ResolvedPackages:
   errors: []
   versions:
     all:
+    - 4.0.0-preview
+    - 4.0.0
+    - 4.0.7-preview
+    - 4.0.7
+    - 4.0.8-preview
+    - 4.0.9
+    - 4.1.0-preview
+    - 4.1.0
+    - 4.2.0
+    - 4.3.0
+    - 4.3.1
     - 4.3.2
+    - 4.6.0-preview
+    - 4.7.0-preview
     compatible:
     - 4.3.2
+    - 4.6.0-preview
+    - 4.7.0-preview
     verified: 4.3.2
   dependencies: []
   resolvedDependencies: []
@@ -3964,7 +4102,7 @@ m_ResolvedPackages:
   entitlements:
     isAllowed: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 0
+  datePublishedTicks: 637509898070000000
   documentationUrl: 
   hasRepository: 1
   repository:

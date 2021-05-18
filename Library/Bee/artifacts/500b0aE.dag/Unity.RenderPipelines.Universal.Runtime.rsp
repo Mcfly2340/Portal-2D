@@ -305,6 +305,7 @@
 -r:"C:/UnityProjects/2021.1.0f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll"
 -r:"C:/UnityProjects/2021.1.0f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll"
 -r:"C:/UnityProjects/2021.1.0f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll"
+-r:"C:/UnityProjects/Portal-2D/Library/PackageCache/com.unity.cinemachine@2.7.3/Runtime/ThirdParty/clipper_library.dll"
 -r:"Library/Bee/artifacts/500b0aE.dag/Unity.Mathematics.ref.dll"
 -r:"Library/Bee/artifacts/500b0aE.dag/Unity.RenderPipeline.Universal.ShaderLibrary.ref.dll"
 -r:"Library/Bee/artifacts/500b0aE.dag/Unity.RenderPipelines.Core.Runtime.ref.dll"

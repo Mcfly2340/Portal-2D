@@ -5,10 +5,14 @@ using UnityEngine;
 public class ControlsPanel : MonoBehaviour
 {
     public GameObject controlPanelUI;
-    public bool panelEnabled;
+    public bool panelEnabled = true;
     private void Update()
     {
         Panel();
+    }
+    void startPanelEnabled()
+    {
+        controlPanelUI.SetActive(false);
     }
     public void Panel()
     {
@@ -28,6 +32,11 @@ public class ControlsPanel : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Escape) || Menu.startOverPressed)
         {
             controlPanelUI.SetActive(false);
+            panelEnabled = false;
+        }
+        else if (panelEnabled)
+        {
+            Invoke(nameof(startPanelEnabled), 5);
             panelEnabled = false;
         }
     }

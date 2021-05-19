@@ -5,38 +5,35 @@ using UnityEngine.SceneManagement;
 
 public class Portal : MonoBehaviour
 {
-    //enviroment asssets
-    public Vector3 mousepos;
+    private Vector3 mousepos;
 
-    //Portal assets:
-    public Transform portalBlueSpawnPos, portalOrangeSpawnPos;
-
+    [Header("Game Objects")]
+    [Space]
     public GameObject portalBlue, portalOrange;
     public GameObject portalGreen;
 
+    [Header("Transforms")]
+    [Space]
+    public Transform portalBlueSpawnPos, portalOrangeSpawnPos;
+
+    [Header("Booleans")]
+    [Space]
     public bool portalIsEquiped = false;
     public bool isCharged = false;
 
+    [Header("Audio Assets")]
+    [Space]
     public AudioSource CancelShootSound;
     public AudioSource ShootSound;
 
-    //Player assets
+    [Header("Player Assets")]
+    [Space]
     public GameObject Player;
     public Collider2D PlayerColl;
     public Camera cam;
     public Transform firePoint;
     public LineRenderer lineRenderer;
 
-
-
-
-    private void Awake()
-    {
-        DontDestroyOnLoad(portalBlue);
-        DontDestroyOnLoad(portalOrange);
-        DontDestroyOnLoad(portalGreen);
-        DontDestroyOnLoad(Player);
-    }
 
     void Update()
     {
@@ -211,8 +208,7 @@ public class Portal : MonoBehaviour
             }
             else 
             {
-                portalGreen.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, 222, Input.mousePosition.z + 10));
-                //, firePoint.transform.position.y + 0.1f, 0);
+                portalGreen.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Player.transform.position.y + 140, Input.mousePosition.z + 10));
                 portalGreen.transform.rotation = Quaternion.Euler(Vector3.forward * 0);
             }
         }

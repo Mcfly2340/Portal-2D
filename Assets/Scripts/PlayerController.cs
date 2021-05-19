@@ -5,29 +5,45 @@ using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
-    public Rigidbody2D rb;
-    public float movespeed, dirX, dirY;
+    [Header("Animators")]
+    [Space]
     public Animator PlayerAnim;
 
+    [Header("Booleans")]
+    [Space]
+    bool isFacingRight = true;
+    public static bool isCrawling = false;
+    public static bool canCrawl = false;
+    public bool isSprinting = false;
+    public static bool canSprint = false;
+
+    [Header("Floats")]
+    [Space]
+    public float moveSpeed;
+    public float dirX, dirY;
     public float positionRadius;
     public float speed;
-    public int multiplier = 1;
     public float jumpForce;
-    [SerializeField] private Collider2D playerCollider;
-    [SerializeField] private LayerMask groundLayer;
+    public float maxVelocity = 80f;
+
+    [Header("Game Objects")]
+    [Space]
     public static GameObject player;
-    //facing direction player
-    bool isFacingRight = true;
-
-    public static bool isCrawling = false;
-    private bool isSprinting = false;
-
-    public float maxVelocity = 80;
+    public GameObject playerSpawnPos;
     private static GameObject instance;
 
-   // [Header("Events")]
-    //[Space]
+    [Header("Integers")]
+    [Space]
+    public int multiplier = 1;
 
+    [Header("Rigidbody's")]
+    [Space]
+    public Rigidbody2D rb;
+
+    [Header("-Others-")]
+    [Space]
+    [SerializeField] private Collider2D playerCollider;
+    [SerializeField] private LayerMask groundLayer;
     
     void Start()
     {
@@ -51,7 +67,7 @@ public class PlayerController : MonoBehaviour
         //General Movement (left or right)
         dirX = Input.GetAxis("Horizontal") * Time.deltaTime * speed * multiplier;
 
-        Sprinting();
+        if(canSprint)Sprinting();
         
 
         //FLIPPING PLAYER
@@ -65,8 +81,11 @@ public class PlayerController : MonoBehaviour
         {
             if (isFacingRight)flipPlayer();
         }
-        
-        Crawling();
+
+        if (canCrawl)
+        {
+            Crawling();
+        }
         if (isCrawling == true)
         {//walk slow when crouching
             rb.transform.Translate(dirX / 5, 0, 0, 0);
@@ -115,7 +134,7 @@ public class PlayerController : MonoBehaviour
             PlayerAnim.SetBool("iscrawling", false);
         }
     }
-    private void Jump()
+    public void Jump()
     {
         if (IsGrounded() && !isCrawling && Input.GetKey(KeyCode.Space))
         {//for jumping
@@ -141,10 +160,9 @@ public class PlayerController : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        
-        if (collision.transform.gameObject.name == "floor" || collision.transform.gameObject.name == "ceiling")
+        //for jumping
+        if (collision.transform.gameObject.tag == "Up & Down")
         {
-            Debug.Log(collision.transform.gameObject.name);
             if (rb.velocity.y <= 0.5f && rb.velocity.y >= -0.5f) PlayerAnim.SetBool("isjumping", false);
         }
     }

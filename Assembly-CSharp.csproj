@@ -62,16 +62,17 @@
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Menu.cs" />
     <Compile Include="Assets\Scripts\DoorWay.cs" />
-    <Compile Include="Assets\Machine.cs" />
+    <Compile Include="Assets\Scripts\Machine.cs" />
     <Compile Include="Assets\Scripts\BringThroughScenesBluePortal.cs" />
-    <Compile Include="Assets\CheckAtStart.cs" />
+    <Compile Include="Assets\Scripts\CheckAtStart.cs" />
     <Compile Include="Assets\Scripts\EquipDevice.cs" />
     <Compile Include="Assets\Scripts\ControlsPanel.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
+    <Compile Include="Assets\Scripts\DeathScript.cs" />
+    <Compile Include="Assets\Scripts\StartCutscene.cs" />
     <Compile Include="Assets\Scripts\BringThroughScenesOrangePortal.cs" />
     <Compile Include="Assets\Scripts\BringThroughScenesGreenPortal.cs" />
-    <Compile Include="Assets\Particles.cs" />
-    <Compile Include="Assets\StartCutscene.cs" />
+    <Compile Include="Assets\Scripts\Particles.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

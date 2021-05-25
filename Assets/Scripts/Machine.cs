@@ -1,16 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Machine : MonoBehaviour
 {
     public float transitionTime = 5f;
-    public AudioSource MachineSound;
-    public GameObject machinesound;
+
+    public GameObject machineSound;
+    public GameObject ambientSound;
     public Animator MachineShake;
     public Animator ClockRotation;
     private bool alreadyPlayed = false;
+    public static bool isStandingStill = false;
+    public Animator transition;
+    public GameObject player;
+    public GameObject futureSpawnPoint;
+
 
     private void Awake()
     {
@@ -19,25 +24,27 @@ public class Machine : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        StartCoroutine(WaitForSeconds(SceneManager.GetActiveScene().buildIndex + 1));
+        StartCoroutine(WaitForSeconds());
     }
-    IEnumerator WaitForSeconds(int levelIndex)
+    IEnumerator WaitForSeconds()
     {
         
         if (!alreadyPlayed)
         {
-            machinesound.SetActive(true);
-            MachineSound.Play();
+            machineSound.SetActive(true);
             alreadyPlayed = true;
         }
 
         //disable player movements
-        PlayerController.FindObjectOfType<PlayerController>().enabled = false;
+        isStandingStill = true;
         MachineShake.SetBool("HasEntered", true);
         ClockRotation.SetBool("HasEntered", true);
-        DontDestroyOnLoad(MachineSound);
         yield return new WaitForSeconds(transitionTime);
-        SceneManager.LoadScene(levelIndex);
-
+        transition.SetTrigger("Start");
+        yield return new WaitForSeconds(transitionTime);
+        player.transform.position = futureSpawnPoint.transform.position;
+        transition.SetTrigger("End");
+        ambientSound.SetActive(true);
+        isStandingStill = false;
     }
 }

@@ -357,6 +357,7 @@
 "Assets/Scripts/PlayerController.cs"
 "Assets/Scripts/Portal.cs"
 "Assets/Scripts/StartCutscene.cs"
+"Assets/TestScript.cs"
 -langversion:8.0
 
 /deterministic

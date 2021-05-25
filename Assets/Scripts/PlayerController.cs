@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
@@ -53,9 +52,14 @@ public class PlayerController : MonoBehaviour
     {
         if (StartCutscene.isInCutscene == false)
         {
-            Jump();
-            Movement();
+            if(Machine.isStandingStill == false)
+            {
+                Jump();
+                Movement();
+            }
+            
         }
+
         PlayerAnim.SetFloat("Speed", Mathf.Abs(dirX));
     }
     void FixedUpdate()

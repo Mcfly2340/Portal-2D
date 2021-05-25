@@ -9,11 +9,17 @@ public class StartCutscene : MonoBehaviour
     public Rigidbody2D prb;
     public Animator playerAnimation;
     public Collider2D cutsceneTrigger;
+    public GameObject fireEffect;
+    public GameObject explosionEffect;
+    public GameObject explosionLight;
+    public GameObject fires;
+    public GameObject collideWithFire;
 
     private void Start()
     {
         cutsceneTrigger = GetComponent<BoxCollider2D>();
         stopRunning();
+
     }
     private void Update()
     {
@@ -56,15 +62,39 @@ public class StartCutscene : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
             prb.transform.Translate(0.1f, 0, 0, 0);
         }
-        for (int i = 0; i < 100; i++)
-        {
-            Debug.Log(playerAnimation.GetFloat("speed"));
-            playerAnimation.SetFloat("speed", 0);
-        }
+        //player can stand still after walking
+        Machine.isStandingStill = true;
+        //wait 5 seconds
+        yield return new WaitForSeconds(5);
+        //explosion effect
+        explosionEffect.SetActive(true);
+        Debug.Log("It's Going To Explode!");
+        //wait 2 seconds
+        yield return new WaitForSeconds(2);
+        //fires to activate
+        fires.SetActive(true);
+        //death collider to active
+        collideWithFire.SetActive(true);
+        //set explosion to active
+        explosionLight.SetActive(true);
+        fireEffect.SetActive(true);
+        //wait 3 seconds
+        yield return new WaitForSeconds(3);
+        //set light to deactivate
+        explosionLight.SetActive(false);
+        //can walk again
+        Machine.isStandingStill = false;
     }
     void stopRunning()
     {
         camAnim.SetBool("cutscene1", false);
         isInCutscene = false;
+    }
+    void enableFires()
+    {/*
+        for (int i = 0; i < fire.Length; i++)
+        {
+            fire[i].SetActive(true);
+        }*/
     }
 }

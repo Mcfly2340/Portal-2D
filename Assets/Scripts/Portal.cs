@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Portal : MonoBehaviour
 {
@@ -9,16 +8,23 @@ public class Portal : MonoBehaviour
 
     [Header("Game Objects")]
     [Space]
-    public GameObject portalBlue, portalOrange;
+    public GameObject portalBlue;
+    public GameObject portalOrange;
     public GameObject portalGreen;
+    public GameObject impactEffect;
+
+    [Header("Player Assets")]
+    [Space]
+    public ParticleSystem ps;
 
     [Header("Transforms")]
     [Space]
-    public Transform portalBlueSpawnPos, portalOrangeSpawnPos;
+    public Transform portalBlueSpawnPos;
+    public Transform portalOrangeSpawnPos;
 
     [Header("Booleans")]
     [Space]
-    public bool portalIsEquiped = false;
+    public static bool portalIsEquiped = false;
     public bool isCharged = false;
 
     [Header("Audio Assets")]
@@ -37,23 +43,34 @@ public class Portal : MonoBehaviour
 
     void Update()
     {
+        ParticleSystem.MainModule ma = ps.main;
         if (portalIsEquiped)
         {
             mousepos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.z));
             if (Input.GetButtonDown("Fire1"))//press left mouse button
             {
+                ma.startColor = Color.blue;
                 StartCoroutine(ShootBlue());
                 ShootSound.Play();
             }
             else if (Input.GetButtonDown("Fire2"))//press right mouse button
             {
+                ma.startColor = new Color(255, 0, 0, 255);
                 StartCoroutine(ShootOrange());
                 ShootSound.Play();
             }
-            else if (Input.GetKeyDown(KeyCode.Mouse2))//press f button
+            else if (Input.GetKeyDown(KeyCode.Mouse2))//press middle mouse button
             {
+                ma.startColor = Color.green;
                 StartCoroutine(ShootGreen());
                 ShootSound.Play();
+            }
+            else if (Input.GetKeyDown(KeyCode.R))//press R button
+            {
+                ma.startColor = Color.white;
+                removePortals();
+                CancelShootSound.Play();
+                Instantiate(impactEffect, Player.transform.position, Quaternion.identity);
             }
         }
         else
@@ -83,26 +100,29 @@ public class Portal : MonoBehaviour
         }
     }
     IEnumerator ShootBlue()
-    {//yellow raycast
+    {
         Vector3 endPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         RaycastHit2D hitInfo = Physics2D.Raycast(firePoint.position, endPos - firePoint.position);
         
 
         if (hitInfo)
         {
-            //blue line
+            //change line to blue
             lineRenderer.startColor = Color.blue;
             lineRenderer.endColor = Color.blue;
+            //set positions of the line
             lineRenderer.SetPosition(0, firePoint.position);
             lineRenderer.SetPosition(1, endPos);
+            //instantiate an impact effect to the place of the impact
+            Instantiate(impactEffect, hitInfo.point, Quaternion.identity);
 
             if (hitInfo.transform.name == "Character" || hitInfo.transform.name == "BluePortal" || hitInfo.transform.name == "OrangePortal" || hitInfo.transform.name == "GreenPortal")
-            {
+            {//ignore collisions
                 Physics2D.IgnoreCollision(PlayerColl, PlayerColl, true);
             }
             else if (hitInfo.transform.gameObject.layer == LayerMask.NameToLayer("Environment"))
-            {
-                if (Player.transform.rotation.eulerAngles.y < 1 && Player.transform.rotation.eulerAngles.y > -1)//if facing right (normally)
+            {//if facing right (normal rotation)
+                if (Player.transform.rotation.eulerAngles.y < 1 && Player.transform.rotation.eulerAngles.y > -1)
                 {
                     portalBlue.transform.position = new Vector3(hitInfo.transform.position.x - 1, mousepos.y);
                     portalBlue.transform.rotation = Quaternion.Euler(Vector3.forward * 0);
@@ -114,12 +134,12 @@ public class Portal : MonoBehaviour
                 }
             }
             
-            if (hitInfo.transform.gameObject.layer == LayerMask.NameToLayer("UP"))
-            {
+            if (hitInfo.transform.gameObject.layer == LayerMask.NameToLayer("Ceiling"))
+            {//if the raycast hit an object with layer ceiling then rotate 90°
                 portalBlue.transform.position = new Vector3(mousepos.x, hitInfo.transform.position.y - 1f);
                 portalBlue.transform.rotation = Quaternion.Euler(Vector3.forward * 90);
-            }else if (hitInfo.transform.gameObject.layer == LayerMask.NameToLayer("DOWN"))
-            {
+            }else if (hitInfo.transform.gameObject.layer == LayerMask.NameToLayer("Floor"))
+            {//else if the raycast hit an object with layer floor then rotate -90°
                 portalBlue.transform.position = new Vector3(mousepos.x, hitInfo.transform.position.y + 1f);
                 portalBlue.transform.rotation = Quaternion.Euler(Vector3.forward * -90);
             }
@@ -146,6 +166,7 @@ public class Portal : MonoBehaviour
         lineRenderer.endColor = new Color(255, 0, 0, 255);
         lineRenderer.SetPosition(0, firePoint.position);
         lineRenderer.SetPosition(1, endPos);
+        Instantiate(impactEffect, hitInfo.point, Quaternion.identity);
 
         if (hitInfo)
         {
@@ -166,12 +187,12 @@ public class Portal : MonoBehaviour
                 portalOrange.transform.rotation = Quaternion.Euler(Vector3.forward * 0);
 
             }
-            if (hitInfo.transform.gameObject.layer == LayerMask.NameToLayer("UP"))
+            if (hitInfo.transform.gameObject.layer == LayerMask.NameToLayer("Ceiling"))
             {
                 portalOrange.transform.position = new Vector3(mousepos.x, hitInfo.transform.position.y + 0.3f);
                 portalOrange.transform.rotation = Quaternion.Euler(Vector3.forward * -90);
             }
-            else if (hitInfo.transform.gameObject.layer == LayerMask.NameToLayer("DOWN"))
+            else if (hitInfo.transform.gameObject.layer == LayerMask.NameToLayer("Floor"))
             {
                 portalOrange.transform.position = new Vector3(mousepos.x, hitInfo.transform.position.y - 0.3f);
                 portalOrange.transform.rotation = Quaternion.Euler(Vector3.forward * 90);
@@ -198,6 +219,7 @@ public class Portal : MonoBehaviour
         lineRenderer.endColor = Color.green;
         lineRenderer.SetPosition(0, firePoint.position);
         lineRenderer.SetPosition(1, endPos);
+        Instantiate(impactEffect, hitInfo.point, Quaternion.identity);
 
         if (hitInfo)
         {
@@ -208,7 +230,7 @@ public class Portal : MonoBehaviour
             }
             else 
             {
-                portalGreen.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Player.transform.position.y + 140, Input.mousePosition.z + 10));
+                portalGreen.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, hitInfo.transform.position.y + 120, Input.mousePosition.z + 10));
                 portalGreen.transform.rotation = Quaternion.Euler(Vector3.forward * 0);
             }
         }
@@ -224,6 +246,12 @@ public class Portal : MonoBehaviour
         //disable shooting line
         lineRenderer.enabled = false;
     }
+    void removePortals()
+    {
+        portalBlue.transform.position = new Vector3(1000, 1000, 1000);
+        portalOrange.transform.position = new Vector3(1000, 1000, 1000);
+        portalGreen.transform.position = new Vector3(1000, 1000, 1000);
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -237,25 +265,8 @@ public class Portal : MonoBehaviour
         }
         else if (gameObject.name == "GreenPortal")
         {
-            DontDestroyOnLoad(Player);
-            Scene currentScene = SceneManager.GetActiveScene();
-            int buildIndex = currentScene.buildIndex;
-            Scene sceneLoaded = SceneManager.GetActiveScene();
-            switch (buildIndex)
-            {
-                case 0://main menu
-                    SceneManager.LoadScene(sceneLoaded.buildIndex + 1);
-                    break;
-                case 1://scene 1
-                    SceneManager.LoadScene(sceneLoaded.buildIndex + 1);
-                    break;
-                case 2://scene 1 alternate
-                    SceneManager.LoadScene(sceneLoaded.buildIndex - 1);
-                    break;
-                case 3:
-                    SceneManager.LoadScene(sceneLoaded.buildIndex + 1);
-                    break;
-            }
+            Player.transform.position = new Vector3(Player.transform.position.x, Player.transform.position.y - 100, Player.transform.position.z);
+            portalGreen.transform.position = new Vector3(portalGreen.transform.position.x, portalGreen.transform.position.y - 100, portalGreen.transform.position.z);
         }
     }
 }

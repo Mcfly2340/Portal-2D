@@ -44,7 +44,7 @@ public class Menu : MonoBehaviour
         {
             DeathScript.deathScreen.SetActive(true);
             playerRb.gravityScale = -10;
-            //playerRb.gravityScale = 3;
+            Portal.portalIsEquiped = false;
 
         } else if (DeathScript.isDead == true)
         {

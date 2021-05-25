@@ -36,7 +36,7 @@ public class ControlsPanel : MonoBehaviour
         }
         else if (panelEnabled)
         {
-            Invoke(nameof(startPanelEnabled), 5);
+            Invoke(nameof(startPanelEnabled), 8);
             panelEnabled = false;
         }
     }

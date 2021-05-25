@@ -5,16 +5,23 @@ using UnityEngine;
 public class Machine : MonoBehaviour
 {
     public float transitionTime = 5f;
-
+    [Header("Game Objects")]
+    [Space]
     public GameObject machineSound;
     public GameObject ambientSound;
-    public Animator MachineShake;
-    public Animator ClockRotation;
-    private bool alreadyPlayed = false;
-    public static bool isStandingStill = false;
-    public Animator transition;
     public GameObject player;
     public GameObject futureSpawnPoint;
+    public GameObject fireAlarm;
+
+    [Header("Animators")]
+    [Space]
+    public Animator MachineShake;
+    public Animator ClockRotation;
+    public Animator transition;
+
+    //booleans
+    private bool alreadyPlayed = false;
+    public static bool isStandingStill = false;
 
 
     private void Awake()
@@ -41,10 +48,13 @@ public class Machine : MonoBehaviour
         ClockRotation.SetBool("HasEntered", true);
         yield return new WaitForSeconds(transitionTime);
         transition.SetTrigger("Start");
+        //stop firealarm
+        fireAlarm.SetActive(false);
         yield return new WaitForSeconds(transitionTime);
         player.transform.position = futureSpawnPoint.transform.position;
         transition.SetTrigger("End");
         ambientSound.SetActive(true);
         isStandingStill = false;
+        Portal.isInFuture = true;
     }
 }

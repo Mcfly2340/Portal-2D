@@ -26,6 +26,7 @@ public class Portal : MonoBehaviour
     [Space]
     public static bool portalIsEquiped = false;
     public bool isCharged = false;
+    public static bool isInFuture = false;
 
     [Header("Audio Assets")]
     [Space]
@@ -145,9 +146,9 @@ public class Portal : MonoBehaviour
             }
         }
         else
-        {//if hit nothing then stretch 100x to the right
-            lineRenderer.SetPosition(0, firePoint.position);
-            lineRenderer.SetPosition(1, firePoint.position + Camera.main.ScreenToWorldPoint(Input.mousePosition) * 100);
+        {//if hit nothing then make invisible
+            lineRenderer.startColor = new Color(0, 0, 0, 0);
+            lineRenderer.endColor = new Color(0, 0, 0, 0);
         }
         //enable shooting line
         lineRenderer.enabled = true;
@@ -199,9 +200,9 @@ public class Portal : MonoBehaviour
             }
         }
         else
-        {//if hit nothing then stretch 100x to the right
-            lineRenderer.SetPosition(0, firePoint.position);
-            lineRenderer.SetPosition(1, firePoint.position + firePoint.right * 100);
+        {//if hit nothing then make invisible
+            lineRenderer.startColor = new Color(0, 0, 0, 0);
+            lineRenderer.endColor = new Color(0, 0, 0, 0);
         }
         //enable shooting line
         lineRenderer.enabled = true;
@@ -265,8 +266,18 @@ public class Portal : MonoBehaviour
         }
         else if (gameObject.name == "GreenPortal")
         {
-            Player.transform.position = new Vector3(Player.transform.position.x, Player.transform.position.y - 100, Player.transform.position.z);
-            portalGreen.transform.position = new Vector3(portalGreen.transform.position.x, portalGreen.transform.position.y - 100, portalGreen.transform.position.z);
+            if (isInFuture == false)
+            {
+                Player.transform.position = new Vector3(Player.transform.position.x, Player.transform.position.y - 29.5f, Player.transform.position.z);
+                portalGreen.transform.position = new Vector3(portalGreen.transform.position.x, portalGreen.transform.position.y - 29.5f, portalGreen.transform.position.z);
+                isInFuture = true;
+            }
+            else
+            {
+                Player.transform.position = new Vector3(Player.transform.position.x, Player.transform.position.y + 29.5f, Player.transform.position.z);
+                portalGreen.transform.position = new Vector3(portalGreen.transform.position.x, portalGreen.transform.position.y + 29.5f, portalGreen.transform.position.z);
+                isInFuture = false;
+            }
         }
     }
 }

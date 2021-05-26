@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class StartCutscene : MonoBehaviour
 {
@@ -24,6 +25,9 @@ public class StartCutscene : MonoBehaviour
     public Collider2D cutsceneTrigger;
     public AudioSource earRingSound;
     public AudioSource fireAlarm;
+    public AudioSource fire;
+    public AudioSource chattering;
+    public Light2D explosionLight2D;
     public static bool isInCutscene = false;
 
 
@@ -80,13 +84,18 @@ public class StartCutscene : MonoBehaviour
         //wait 5 seconds
         yield return new WaitForSeconds(4);
 
+        //stop chattering
+        chattering.Stop();
+
         //explosion effect
         explosionEffect.SetActive(true);
 
-        Debug.Log("It's Going To Explode!");
-
         //wait 2 seconds
         yield return new WaitForSeconds(2);
+
+        //set explosion to active
+        explosionLight.SetActive(true);
+        fireEffect.SetActive(true);
 
         //fires to activate
         fires.SetActive(true);
@@ -94,43 +103,37 @@ public class StartCutscene : MonoBehaviour
         //death collider to active
         collideWithFire.SetActive(true);
 
-        //set explosion to active
-        explosionLight.SetActive(true);
-        fireEffect.SetActive(true);
-
-        
-
-        //wait 2 seconds
-        yield return new WaitForSeconds(2);
-
-        //lower earring sound
-        for (float i = 0.3f; i >= 0; i -= 0.01f)
-        {
-            yield return new WaitForSeconds(0.5f);
-            earRingSound.volume = i;
-        }
-        for (float i = 0f; i <= 1; i += 0.2f)
-        {
-            yield return new WaitForSeconds(0.5f);
-            fireAlarm.volume = i;
-        }
-        //set sound to false when volume is 0
-        startText.SetActive(false);
-
-        //wait 3 seconds
-        yield return new WaitForSeconds(3);
-
-        //set light to deactivate
-        explosionLight.SetActive(false);
-
         //set roof to disabled
         Roof.SetActive(false);
 
         //set destroyed roof to enabled
         destoyedRoof.SetActive(true);
-        
+
+        //set sound to false when volume is 0
+        startText.SetActive(false);
+
+        //lower earring sound
+        //lower light
+        float j = 2;
+        for (float i = 0.3f; i >= 0; i -= 0.01f)
+        {
+            earRingSound.volume = i;
+            yield return new WaitForSeconds(0.5f);
+
+            j -= 0.066f;
+            
+            explosionLight2D.intensity = j;
+        }
+
         //can walk again
         Machine.isStandingStill = false;
+
+        for (float i = 0f; i <= 1; i += 0.05f)
+        {
+            yield return new WaitForSeconds(0.5f);
+            fireAlarm.volume = i;
+            fire.volume = i;
+        }
     }
     void stopRunning()
     {

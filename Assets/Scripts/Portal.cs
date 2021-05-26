@@ -6,6 +6,10 @@ public class Portal : MonoBehaviour
 {
     private Vector3 mousepos;
 
+    [Header("Animators")]
+    [Space]
+    public Animator PlayerAnim;
+
     [Header("Game Objects")]
     [Space]
     public GameObject portalBlue;
@@ -53,18 +57,24 @@ public class Portal : MonoBehaviour
                 ma.startColor = Color.blue;
                 StartCoroutine(ShootBlue());
                 ShootSound.Play();
+                PlayerAnim.SetBool("isjumping", false);
+                PlayerAnim.SetTrigger("isShooting");
             }
             else if (Input.GetButtonDown("Fire2"))//press right mouse button
             {
                 ma.startColor = new Color(255, 0, 0, 255);
                 StartCoroutine(ShootOrange());
                 ShootSound.Play();
+                PlayerAnim.SetBool("isjumping", false);
+                PlayerAnim.SetTrigger("isShooting");
             }
             else if (Input.GetKeyDown(KeyCode.Mouse2))//press middle mouse button
             {
                 ma.startColor = Color.green;
                 StartCoroutine(ShootGreen());
                 ShootSound.Play();
+                PlayerAnim.SetBool("isjumping", false);
+                PlayerAnim.SetTrigger("isShooting");
             }
             else if (Input.GetKeyDown(KeyCode.R))//press R button
             {
@@ -121,7 +131,7 @@ public class Portal : MonoBehaviour
             {//ignore collisions
                 Physics2D.IgnoreCollision(PlayerColl, PlayerColl, true);
             }
-            else if (hitInfo.transform.gameObject.layer == LayerMask.NameToLayer("Environment"))
+            else if (hitInfo.transform.gameObject.tag == "Left & Right")
             {//if facing right (normal rotation)
                 if (Player.transform.rotation.eulerAngles.y < 1 && Player.transform.rotation.eulerAngles.y > -1)
                 {
@@ -135,11 +145,11 @@ public class Portal : MonoBehaviour
                 }
             }
             
-            if (hitInfo.transform.gameObject.layer == LayerMask.NameToLayer("Ceiling"))
+            if (hitInfo.transform.gameObject.tag == "Ceiling")
             {//if the raycast hit an object with layer ceiling then rotate 90°
                 portalBlue.transform.position = new Vector3(mousepos.x, hitInfo.transform.position.y - 1f);
                 portalBlue.transform.rotation = Quaternion.Euler(Vector3.forward * 90);
-            }else if (hitInfo.transform.gameObject.layer == LayerMask.NameToLayer("Floor"))
+            }else if (hitInfo.transform.gameObject.tag == "Floor")
             {//else if the raycast hit an object with layer floor then rotate -90°
                 portalBlue.transform.position = new Vector3(mousepos.x, hitInfo.transform.position.y + 1f);
                 portalBlue.transform.rotation = Quaternion.Euler(Vector3.forward * -90);
@@ -162,39 +172,43 @@ public class Portal : MonoBehaviour
         Vector3 endPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         RaycastHit2D hitInfo = Physics2D.Raycast(firePoint.position, endPos - firePoint.position);
 
-        //color to orange
-        lineRenderer.startColor = new Color(255, 0, 0, 255);
-        lineRenderer.endColor = new Color(255, 0, 0, 255);
-        lineRenderer.SetPosition(0, firePoint.position);
-        lineRenderer.SetPosition(1, endPos);
-        Instantiate(impactEffect, hitInfo.point, Quaternion.identity);
 
         if (hitInfo)
         {
-            
+            //change line to orange
+            lineRenderer.startColor = new Color(255, 128, 0, 255);
+            lineRenderer.endColor = new Color(255, 0, 0, 255);
+            //set positions of the line
+            lineRenderer.SetPosition(0, firePoint.position);
+            lineRenderer.SetPosition(1, endPos);
+            //instantiate an impact effect to the place of the impact
+            Instantiate(impactEffect, hitInfo.point, Quaternion.identity);
 
             if (hitInfo.transform.name == "Character" || hitInfo.transform.name == "BluePortal" || hitInfo.transform.name == "OrangePortal" || hitInfo.transform.name == "GreenPortal")
-            {
+            {//ignore collisions
                 Physics2D.IgnoreCollision(PlayerColl, PlayerColl, true);
             }
-            else if (Player.transform.rotation.eulerAngles.y < 1 && transform.rotation.eulerAngles.y > -1)//if going right
-            {
-                portalOrange.transform.position = new Vector3(hitInfo.transform.position.x + 0.3f, mousepos.y);
-                portalOrange.transform.rotation = Quaternion.Euler(Vector3.forward * 180);
+            else if (hitInfo.transform.gameObject.tag == "Left & Right")
+            {//if facing right (normal rotation)
+                if (Player.transform.rotation.eulerAngles.y < 1 && Player.transform.rotation.eulerAngles.y > -1)
+                {
+                    portalOrange.transform.position = new Vector3(hitInfo.transform.position.x + 0.3f, mousepos.y);
+                    portalOrange.transform.rotation = Quaternion.Euler(Vector3.forward * 180); ;
+                }
+                else //if facing left
+                {
+                    portalOrange.transform.position = new Vector3(hitInfo.transform.position.x - 0.3f, mousepos.y);
+                    portalOrange.transform.rotation = Quaternion.Euler(Vector3.forward * 0);
+                }
             }
-            else
-            {
-                portalOrange.transform.position = new Vector3(hitInfo.transform.position.x - 0.3f, mousepos.y);
-                portalOrange.transform.rotation = Quaternion.Euler(Vector3.forward * 0);
 
-            }
-            if (hitInfo.transform.gameObject.layer == LayerMask.NameToLayer("Ceiling"))
-            {
+            if (hitInfo.transform.gameObject.tag == "Ceiling")
+            {//if the raycast hit an object with layer ceiling then rotate 90°
                 portalOrange.transform.position = new Vector3(mousepos.x, hitInfo.transform.position.y + 0.3f);
                 portalOrange.transform.rotation = Quaternion.Euler(Vector3.forward * -90);
             }
-            else if (hitInfo.transform.gameObject.layer == LayerMask.NameToLayer("Floor"))
-            {
+            else if (hitInfo.transform.gameObject.tag == "Floor")
+            {//else if the raycast hit an object with layer floor then rotate -90°
                 portalOrange.transform.position = new Vector3(mousepos.x, hitInfo.transform.position.y - 0.3f);
                 portalOrange.transform.rotation = Quaternion.Euler(Vector3.forward * 90);
             }
@@ -207,7 +221,7 @@ public class Portal : MonoBehaviour
         //enable shooting line
         lineRenderer.enabled = true;
         //wait some time
-        yield return new WaitForSeconds(0.04f);
+        yield return new WaitForSeconds(0.02f);
         //disable shooting line
         lineRenderer.enabled = false;
     }

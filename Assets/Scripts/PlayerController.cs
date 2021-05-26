@@ -144,6 +144,9 @@ public class PlayerController : MonoBehaviour
         {//for jumping
             PlayerAnim.SetBool("isjumping", true);
             rb.velocity = Vector3.up * jumpForce;
+        }else if(IsGrounded())
+        {
+            PlayerAnim.SetBool("isjumping", false);
         }
         if (!IsGrounded() && rb.velocity.y <= -2)
         {//for falling
@@ -165,7 +168,7 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //for jumping
-        if (collision.transform.gameObject.tag == "Up & Down")
+        if (collision.transform.gameObject.tag == "Jumpable")
         {
             if (rb.velocity.y <= 0.5f && rb.velocity.y >= -0.5f) PlayerAnim.SetBool("isjumping", false);
         }

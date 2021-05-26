@@ -13,6 +13,7 @@ public class Menu : MonoBehaviour
     [Space]
     public GameObject pauseMenuUI;
     public GameObject deathScreenUI;
+    public GameObject controlPanelUI;
     public GameObject player;
 
     [Header("Integers")]
@@ -22,13 +23,19 @@ public class Menu : MonoBehaviour
     [Header("Rigidbody's")]
     [Space]
     public Rigidbody2D playerRb;
+
+    [Header("Booleans")]
+    [Space]
     
+    public bool panelEnabled = false;
+
     //Static Booleans
     public static bool isPaused = false;
     public static bool startOverPressed = false;
 
     private void Update()
     {
+        ControlPanel();
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (isPaused)
@@ -52,13 +59,33 @@ public class Menu : MonoBehaviour
             playerRb.transform.Translate(0, 0, 0);
         }
     }
+    public void ControlPanel()
+    {
+        if (Input.GetKeyDown(KeyCode.F10))
+        {
+            if (panelEnabled == false)
+            {
+                panelEnabled = true;
+                controlPanelUI.SetActive(true);
+            }
+            else if (panelEnabled == true)
+            {
+                panelEnabled = false;
+                controlPanelUI.SetActive(false);
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape) || Menu.startOverPressed)
+        {
+            controlPanelUI.SetActive(false);
+            panelEnabled = false;
+        }
+    }
     public void Pause()
     {
         pauseMenuUI.SetActive(true);
         deathScreenUI.SetActive(false);
         Time.timeScale = 0f;
         isPaused = true;
-        GetComponent<ControlsPanel>().Panel();
     }
     public void Resume()
     {
@@ -92,7 +119,7 @@ public class Menu : MonoBehaviour
     public void QuitButton()
     {
         Debug.Log("Exiting Application...");
-        Time.timeScale = 0.0001f;
+        Time.timeScale = 0f;
         Application.Quit();
     }
     IEnumerator WaitForSeconds(int levelIndex, int time)

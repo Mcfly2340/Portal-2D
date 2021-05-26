@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Up & Down
+  - Ceiling
+  - Floor
+  - Left & Right
   layers:
   - Default
   - TransparentFX
@@ -12,8 +15,8 @@ TagManager:
   - Environment
   - Water
   - UI
-  - Ceiling
-  - Floor
+  - Jumpable
+  - 
   - Background
   - 
   - 

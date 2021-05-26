@@ -5,38 +5,30 @@ using UnityEngine;
 public class ControlsPanel : MonoBehaviour
 {
     public GameObject controlPanelUI;
-    public bool panelEnabled = true;
+    public bool panelEnabled = false;
+
     private void Update()
     {
-        Panel();
-    }
-    void startPanelEnabled()
-    {
-        controlPanelUI.SetActive(false);
+        Panel();       
     }
     public void Panel()
     {
         if (Input.GetKeyDown(KeyCode.F10))
         {
-            if (panelEnabled == true)
+            if (panelEnabled == false)
             {
-                controlPanelUI.SetActive(false);
-                panelEnabled = false;
-            }
-            else
-            {
-                controlPanelUI.SetActive(true);
                 panelEnabled = true;
+                controlPanelUI.SetActive(true);
+            }
+            else if (panelEnabled == true)
+            {
+                panelEnabled = false;
+                controlPanelUI.SetActive(false);
             }
         }
         else if (Input.GetKeyDown(KeyCode.Escape) || Menu.startOverPressed)
         {
             controlPanelUI.SetActive(false);
-            panelEnabled = false;
-        }
-        else if (panelEnabled)
-        {
-            Invoke(nameof(startPanelEnabled), 8);
             panelEnabled = false;
         }
     }

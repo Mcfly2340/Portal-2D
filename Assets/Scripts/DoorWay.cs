@@ -15,7 +15,7 @@ public class DoorWay : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.F))
             {
                 FindObjectOfType<PlayerController>().gameObject.transform.position = new Vector2(spawnPosDoor.transform.position.x, spawnPosDoor.transform.position.y);
-                Destroy(fires);
+                fires.SetActive(false);
             }
         }
         

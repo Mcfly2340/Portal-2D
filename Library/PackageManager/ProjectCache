@@ -5,29 +5,29 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637569220753471449
-    m_Hash: 3553483497
+      ticks: 637577897897743311
+    m_Hash: 1595229801
   m_LockFileStatus:
     m_FilePath: C:/UnityProjects/Portal-2D/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637575462432335565
-    m_Hash: 2405479844
+      ticks: 637577898416878649
+    m_Hash: 1565926730
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
   m_LocalFileStatus: []
 m_ProjectPath: C:/UnityProjects/Portal-2D/Packages
-m_EditorVersion: 2021.1.0f1 (61a549675243)
+m_EditorVersion: 2021.1.5f1 (3737af19df53)
 m_ResolvedPackages:
-- packageId: com.unity.2d.animation@5.0.4
+- packageId: com.unity.2d.animation@6.0.1
   testable: 0
   isDirectDependency: 1
-  version: 5.0.4
+  version: 6.0.1
   source: 1
-  resolvedPath: C:\UnityProjects\Portal-2D\Library\PackageCache\com.unity.2d.animation@5.0.4
+  resolvedPath: C:\UnityProjects\Portal-2D\Library\PackageCache\com.unity.2d.animation@6.0.1
   assetPath: Packages/com.unity.2d.animation
   name: com.unity.2d.animation
   displayName: 2D Animation
@@ -37,8 +37,12 @@ m_ResolvedPackages:
     url: 
   category: 2D
   type: 
-  description: 2D Animation provides all the necessary tooling and runtime components
+  description: '2D Animation provides all the necessary tooling and runtime components
     for skeletal animation using Sprites.
+
+
+    Documentation for v6.0 is currently
+    being updated.'
   status: 4
   errors: []
   versions:
@@ -100,17 +104,12 @@ m_ResolvedPackages:
     - 6.0.1
     - 6.0.3
     compatible:
-    - 5.0.3
-    - 5.0.4
-    - 5.0.5
-    - 6.0.0-pre.1
-    - 6.0.0-pre.2
     - 6.0.1
     - 6.0.3
-    verified: 5.0.5
+    verified: 6.0.3
   dependencies:
   - name: com.unity.2d.common
-    version: 4.0.3
+    version: 5.0.0
   - name: com.unity.mathematics
     version: 1.1.0
   - name: com.unity.2d.sprite
@@ -121,7 +120,7 @@ m_ResolvedPackages:
     version: 1.0.0
   resolvedDependencies:
   - name: com.unity.2d.common
-    version: 4.0.3
+    version: 5.0.0
   - name: com.unity.2d.sprite
     version: 1.0.0
   - name: com.unity.modules.uielements
@@ -153,23 +152,23 @@ m_ResolvedPackages:
   entitlements:
     isAllowed: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 637478931180000000
+  datePublishedTicks: 637526396800000000
   documentationUrl: 
   hasRepository: 1
   repository:
     type: git
     url: https://github.cds.internal.unity3d.com/unity/2d.git
-    revision: 3cf59035d02a34d40d678f2cd5f1c65515a8347e
+    revision: 1de540a091021db4de462f30f9a458120ea465ae
     path: 
   unityLifecycle:
     version: 
     nextVersion: 
-- packageId: com.unity.2d.pixel-perfect@4.0.1
+- packageId: com.unity.2d.pixel-perfect@5.0.0
   testable: 0
   isDirectDependency: 1
-  version: 4.0.1
+  version: 5.0.0
   source: 1
-  resolvedPath: C:\UnityProjects\Portal-2D\Library\PackageCache\com.unity.2d.pixel-perfect@4.0.1
+  resolvedPath: C:\UnityProjects\Portal-2D\Library\PackageCache\com.unity.2d.pixel-perfect@5.0.0
   assetPath: Packages/com.unity.2d.pixel-perfect
   name: com.unity.2d.pixel-perfect
   displayName: 2D Pixel Perfect
@@ -208,11 +207,8 @@ m_ResolvedPackages:
     - 5.0.0-pre.2
     - 5.0.0
     compatible:
-    - 4.0.1
-    - 5.0.0-pre.1
-    - 5.0.0-pre.2
     - 5.0.0
-    verified: 4.0.1
+    verified: 5.0.0
   dependencies: []
   resolvedDependencies: []
   keywords:
@@ -232,23 +228,23 @@ m_ResolvedPackages:
   entitlements:
     isAllowed: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 637328350910000000
+  datePublishedTicks: 637526400420000000
   documentationUrl: 
   hasRepository: 1
   repository:
     type: git
     url: https://github.cds.internal.unity3d.com/unity/2d.git
-    revision: 7d7470f4ca0ea8353d4c9640b3b6ae9d1ebd9c1d
+    revision: 82ee1598c2f1270bc1081c1f908364e528335bd5
     path: 
   unityLifecycle:
     version: 
     nextVersion: 
-- packageId: com.unity.2d.psdimporter@4.0.2
+- packageId: com.unity.2d.psdimporter@5.0.1
   testable: 0
   isDirectDependency: 1
-  version: 4.0.2
+  version: 5.0.1
   source: 1
-  resolvedPath: C:\UnityProjects\Portal-2D\Library\PackageCache\com.unity.2d.psdimporter@4.0.2
+  resolvedPath: C:\UnityProjects\Portal-2D\Library\PackageCache\com.unity.2d.psdimporter@5.0.1
   assetPath: Packages/com.unity.2d.psdimporter
   name: com.unity.2d.psdimporter
   displayName: 2D PSD Importer
@@ -258,9 +254,13 @@ m_ResolvedPackages:
     url: 
   category: 2D
   type: 
-  description: A ScriptedImporter for importing Adobe Photoshop PSB (Photoshop Big)
+  description: 'A ScriptedImporter for importing Adobe Photoshop PSB (Photoshop Big)
     file format. The ScriptedImporter is currently targeted for users who wants to
     create multi Sprite character animation using Unity 2D Animation Package.
+
+
+    Documentation
+    for v5.0 is currently being updated.'
   status: 4
   errors: []
   versions:
@@ -298,23 +298,21 @@ m_ResolvedPackages:
     - 5.0.0-pre.2
     - 5.0.1
     - 5.0.3
+    - 6.0.0-pre.2
     compatible:
-    - 4.0.2
-    - 5.0.0-pre.1
-    - 5.0.0-pre.2
     - 5.0.1
     - 5.0.3
-    verified: 4.0.2
+    verified: 5.0.3
   dependencies:
   - name: com.unity.2d.common
-    version: 4.0.2
+    version: 5.0.0
   - name: com.unity.2d.animation
-    version: 5.0.2
+    version: 6.0.1
   - name: com.unity.2d.sprite
     version: 1.0.0
   resolvedDependencies:
   - name: com.unity.2d.common
-    version: 4.0.3
+    version: 5.0.0
   - name: com.unity.2d.sprite
     version: 1.0.0
   - name: com.unity.modules.uielements
@@ -328,7 +326,7 @@ m_ResolvedPackages:
   - name: com.unity.modules.uielementsnative
     version: 1.0.0
   - name: com.unity.2d.animation
-    version: 5.0.4
+    version: 6.0.1
   - name: com.unity.mathematics
     version: 1.2.1
   - name: com.unity.modules.animation
@@ -349,13 +347,13 @@ m_ResolvedPackages:
   entitlements:
     isAllowed: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 637366443480000000
+  datePublishedTicks: 637526398240000000
   documentationUrl: 
   hasRepository: 1
   repository:
     type: git
     url: https://github.cds.internal.unity3d.com/unity/2d.git
-    revision: 4e96f68a7587d87b4fee15d6f88a5d86c2afa9aa
+    revision: 1de540a091021db4de462f30f9a458120ea465ae
     path: 
   unityLifecycle:
     version: 
@@ -414,12 +412,12 @@ m_ResolvedPackages:
   unityLifecycle:
     version: 
     nextVersion: 
-- packageId: com.unity.2d.spriteshape@5.1.1
+- packageId: com.unity.2d.spriteshape@6.0.0
   testable: 0
   isDirectDependency: 1
-  version: 5.1.1
+  version: 6.0.0
   source: 1
-  resolvedPath: C:\UnityProjects\Portal-2D\Library\PackageCache\com.unity.2d.spriteshape@5.1.1
+  resolvedPath: C:\UnityProjects\Portal-2D\Library\PackageCache\com.unity.2d.spriteshape@6.0.0
   assetPath: Packages/com.unity.2d.spriteshape
   name: com.unity.2d.spriteshape
   displayName: 2D SpriteShape
@@ -484,28 +482,24 @@ m_ResolvedPackages:
     - 6.0.0-pre.1
     - 6.0.0-pre.2
     - 6.0.0
+    - 7.0.0-pre.2
     compatible:
-    - 5.1.0
-    - 5.1.1
-    - 5.1.2
-    - 6.0.0-pre.1
-    - 6.0.0-pre.2
     - 6.0.0
-    verified: 5.1.2
+    verified: 6.0.0
   dependencies:
   - name: com.unity.mathematics
     version: 1.1.0
   - name: com.unity.2d.common
-    version: 4.0.3
+    version: 5.0.0
   - name: com.unity.2d.path
-    version: 4.0.1
+    version: 5.0.0
   - name: com.unity.modules.physics2d
     version: 1.0.0
   resolvedDependencies:
   - name: com.unity.mathematics
     version: 1.2.1
   - name: com.unity.2d.common
-    version: 4.0.3
+    version: 5.0.0
   - name: com.unity.2d.sprite
     version: 1.0.0
   - name: com.unity.modules.uielements
@@ -519,7 +513,7 @@ m_ResolvedPackages:
   - name: com.unity.modules.uielementsnative
     version: 1.0.0
   - name: com.unity.2d.path
-    version: 4.0.1
+    version: 5.0.0
   - name: com.unity.modules.physics2d
     version: 1.0.0
   keywords:
@@ -541,13 +535,13 @@ m_ResolvedPackages:
   entitlements:
     isAllowed: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 637478930260000000
+  datePublishedTicks: 637526400040000000
   documentationUrl: 
   hasRepository: 1
   repository:
     type: git
     url: https://github.cds.internal.unity3d.com/unity/2d.git
-    revision: 3cf59035d02a34d40d678f2cd5f1c65515a8347e
+    revision: 82ee1598c2f1270bc1081c1f908364e528335bd5
     path: 
   unityLifecycle:
     version: 
@@ -670,7 +664,6 @@ m_ResolvedPackages:
     - 2.8.0-exp.2
     - 2.8.0-pre.1
     compatible:
-    - 2.7.2
     - 2.7.3
     - 2.8.0-exp.1
     - 2.8.0-exp.2
@@ -946,7 +939,7 @@ m_ResolvedPackages:
     version: 1.1.9
   resolvedDependencies:
   - name: com.unity.test-framework
-    version: 1.1.22
+    version: 1.1.24
   - name: com.unity.ext.nunit
     version: 1.0.6
   - name: com.unity.modules.imgui
@@ -1155,12 +1148,12 @@ m_ResolvedPackages:
   unityLifecycle:
     version: 
     nextVersion: 
-- packageId: com.unity.test-framework@1.1.22
+- packageId: com.unity.test-framework@1.1.24
   testable: 0
   isDirectDependency: 1
-  version: 1.1.22
+  version: 1.1.24
   source: 1
-  resolvedPath: C:\UnityProjects\Portal-2D\Library\PackageCache\com.unity.test-framework@1.1.22
+  resolvedPath: C:\UnityProjects\Portal-2D\Library\PackageCache\com.unity.test-framework@1.1.24
   assetPath: Packages/com.unity.test-framework
   name: com.unity.test-framework
   displayName: Test Framework
@@ -1204,7 +1197,6 @@ m_ResolvedPackages:
     - 1.1.22
     - 1.1.24
     compatible:
-    - 1.1.22
     - 1.1.24
     verified: 1.1.24
   dependencies:
@@ -1236,13 +1228,13 @@ m_ResolvedPackages:
   entitlements:
     isAllowed: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 637469345300000000
+  datePublishedTicks: 637505702940000000
   documentationUrl: 
   hasRepository: 1
   repository:
     type: git
     url: git+https://github.com/Unity-Technologies/com.unity.test-framework.git
-    revision: 56c667cbc326a1cbab8dfd7ebc693a1121d0abe1
+    revision: e6fe8892689398c0d9aba4587e0ba69edc3d82b8
     path: 
   unityLifecycle:
     version: 
@@ -1406,12 +1398,12 @@ m_ResolvedPackages:
   unityLifecycle:
     version: 
     nextVersion: 
-- packageId: com.unity.timeline@1.5.2
+- packageId: com.unity.timeline@1.5.4
   testable: 0
   isDirectDependency: 1
-  version: 1.5.2
+  version: 1.5.4
   source: 1
-  resolvedPath: C:\UnityProjects\Portal-2D\Library\PackageCache\com.unity.timeline@1.5.2
+  resolvedPath: C:\UnityProjects\Portal-2D\Library\PackageCache\com.unity.timeline@1.5.4
   assetPath: Packages/com.unity.timeline
   name: com.unity.timeline
   displayName: Timeline
@@ -1490,7 +1482,6 @@ m_ResolvedPackages:
     - 1.6.0-pre.4
     - 1.6.0-pre.5
     compatible:
-    - 1.5.2
     - 1.5.4
     - 1.5.5
     - 1.6.0-pre.1
@@ -1534,13 +1525,13 @@ m_ResolvedPackages:
   entitlements:
     isAllowed: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 637462521340000000
+  datePublishedTicks: 637510732040000000
   documentationUrl: 
   hasRepository: 1
   repository:
     type: git
     url: https://github.cds.internal.unity3d.com/unity/com.unity.timeline.git
-    revision: 7bdad7882133452ed8b2cd5bfca556726d3e7a64
+    revision: 7fe777cafcad93e7e44db6bd6a18ed5bd55e781a
     path: 
   unityLifecycle:
     version: 
@@ -3886,12 +3877,12 @@ m_ResolvedPackages:
   unityLifecycle:
     version: 
     nextVersion: 
-- packageId: com.unity.2d.common@4.0.3
+- packageId: com.unity.2d.common@5.0.0
   testable: 0
   isDirectDependency: 0
-  version: 4.0.3
+  version: 5.0.0
   source: 1
-  resolvedPath: C:\UnityProjects\Portal-2D\Library\PackageCache\com.unity.2d.common@4.0.3
+  resolvedPath: C:\UnityProjects\Portal-2D\Library\PackageCache\com.unity.2d.common@5.0.0
   assetPath: Packages/com.unity.2d.common
   name: com.unity.2d.common
   displayName: 2D Common
@@ -3926,12 +3917,10 @@ m_ResolvedPackages:
     - 5.0.0-pre.1
     - 5.0.0-pre.2
     - 5.0.0
+    - 6.0.0-pre.2
     compatible:
-    - 4.0.3
-    - 5.0.0-pre.1
-    - 5.0.0-pre.2
     - 5.0.0
-    verified: 4.0.3
+    verified: 5.0.0
   dependencies:
   - name: com.unity.2d.sprite
     version: 1.0.0
@@ -3964,23 +3953,23 @@ m_ResolvedPackages:
   entitlements:
     isAllowed: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 637408843940000000
+  datePublishedTicks: 637526395060000000
   documentationUrl: 
   hasRepository: 1
   repository:
     type: git
     url: https://github.cds.internal.unity3d.com/unity/2d.git
-    revision: c97def465b1932276762fc13f4cfee58da99d5e9
+    revision: 82ee1598c2f1270bc1081c1f908364e528335bd5
     path: 
   unityLifecycle:
     version: 
     nextVersion: 
-- packageId: com.unity.2d.path@4.0.1
+- packageId: com.unity.2d.path@5.0.0
   testable: 0
   isDirectDependency: 0
-  version: 4.0.1
+  version: 5.0.0
   source: 1
-  resolvedPath: C:\UnityProjects\Portal-2D\Library\PackageCache\com.unity.2d.path@4.0.1
+  resolvedPath: C:\UnityProjects\Portal-2D\Library\PackageCache\com.unity.2d.path@5.0.0
   assetPath: Packages/com.unity.2d.path
   name: com.unity.2d.path
   displayName: 2D Path
@@ -4014,11 +4003,8 @@ m_ResolvedPackages:
     - 5.0.0-pre.2
     - 5.0.0
     compatible:
-    - 4.0.1
-    - 5.0.0-pre.1
-    - 5.0.0-pre.2
     - 5.0.0
-    verified: 4.0.1
+    verified: 5.0.0
   dependencies: []
   resolvedDependencies: []
   keywords:
@@ -4036,13 +4022,13 @@ m_ResolvedPackages:
   entitlements:
     isAllowed: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 637328350450000000
+  datePublishedTicks: 637526399200000000
   documentationUrl: 
   hasRepository: 1
   repository:
     type: git
     url: https://github.cds.internal.unity3d.com/unity/2d.git
-    revision: 7d7470f4ca0ea8353d4c9640b3b6ae9d1ebd9c1d
+    revision: 82ee1598c2f1270bc1081c1f908364e528335bd5
     path: 
   unityLifecycle:
     version: 

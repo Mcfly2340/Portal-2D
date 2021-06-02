@@ -4,27 +4,17 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public Transform player;
+    public Animator camAnim;
 
-    [Space]public Vector3 offset;
-
-    [Space][SerializeField]private Quaternion myRotation;
-
-    [Space] private static GameObject instance;
-
-    void Start()
-    {//check if there is a second camera
-        if (instance != null && instance != this)
-        {//destroy camera
-            Destroy(gameObject);
-            return;
+    private void OnTriggerEnter2D(Collider2D collision)
+    {//if this script belongs to gameobject with name ShowoffPortalTrigger
+        if (this.gameObject.name == "ShowoffPortalTrigger")
+        {
+            camAnim.SetBool("PortalCamIsEnabled", true);
+            if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
+            {//if clicking then disable camera
+                camAnim.SetBool("PortalCamIsEnabled", false);
+            }
         }
-        instance = gameObject;
-        myRotation = this.transform.rotation;
-    }
-    void LateUpdate()
-    {
-        this.transform.rotation = myRotation;
-        transform.position = new Vector3(player.position.x + offset.x, player.position.y + offset.y, offset.z);
     }
 }

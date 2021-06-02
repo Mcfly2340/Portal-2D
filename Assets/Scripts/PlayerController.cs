@@ -41,18 +41,18 @@ public class PlayerController : MonoBehaviour
 
     [Header("-Others-")]
     [Space]
+    public ParticleSystem Dust;
+    public ParticleSystem SlamDust;
     [SerializeField] private Collider2D playerCollider;
     [SerializeField] private LayerMask groundLayer;
     
-    void Start()
-    {
-        DuplicationCorrection();
-    }
     void Update()
     {
+        DebugControlls();
+        //if in cutscene should not move
         if (StartCutscene.isInCutscene == false)
         {
-            if(Machine.isStandingStill == false)
+            if(Machine.shouldNotBeMoving == false)
             {
                 Jump();
                 Movement();
@@ -91,19 +91,11 @@ public class PlayerController : MonoBehaviour
             Crawling();
         }
         if (isCrawling == true)
-        {//walk slow when crouching
+        {//walk slow when crawling
             rb.transform.Translate(dirX / 5, 0, 0, 0);
-            //if not crouching then walk normal
-        }else rb.transform.Translate(dirX, 0, 0, 0);
-    }
-    public void DuplicationCorrection()
-    {
-        if (instance != null && instance != this)
-        {
-            Destroy(gameObject);
-            return;
+            //if not crawling then walk normal
         }
-        instance = gameObject;
+        else rb.transform.Translate(dirX, 0, 0, 0);
     }
     private void Sprinting()
     {
@@ -111,7 +103,7 @@ public class PlayerController : MonoBehaviour
         {
             isSprinting = true;
             PlayerAnim.SetBool("issprinting", true);
-            //is sprinting walk so faster
+            //if is sprinting walk faster
             multiplier = 2;
         }
         else if (Input.GetKeyUp(KeyCode.LeftControl) && isSprinting && !isCrawling)
@@ -145,7 +137,7 @@ public class PlayerController : MonoBehaviour
             PlayerAnim.SetBool("isjumping", true);
             rb.velocity = Vector3.up * jumpForce;
         }else if(IsGrounded())
-        {
+        {//for falling and if not on jumpable ground
             PlayerAnim.SetBool("isjumping", false);
         }
         if (!IsGrounded() && rb.velocity.y <= -2)
@@ -162,15 +154,39 @@ public class PlayerController : MonoBehaviour
     void flipPlayer()
     {
         isFacingRight = !isFacingRight;
-
+        CreateDust();
         transform.Rotate(0f, 180f, 0f);
+        Camera.main.transform.Rotate(0f, -180f, 0f);
+    }
+    void CreateDust()
+    {
+        Dust.Play();
+    }
+    void DebugControlls()
+    {
+        if (Input.GetKey(KeyCode.F2))
+        {
+            Debug.Log("teleported to mouse position");
+            if(Input.GetMouseButtonDown(0)) this.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -1));
+        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //for jumping
-        if (collision.transform.gameObject.tag == "Jumpable")
+        //for slamming back on the ground
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Jumpable"))
         {
-            if (rb.velocity.y <= 0.5f && rb.velocity.y >= -0.5f) PlayerAnim.SetBool("isjumping", false);
+            if (rb.velocity.y <= 0.5f && rb.velocity.y >= -0.5f)
+            {
+                SlamDust.Play();
+                PlayerAnim.SetBool("isjumping", false);
+            }
+        }
+    }
+    private void OnCollisionStay2D(Collision2D collision)
+    {//if on slope then add particles
+        if (collision.transform.gameObject.tag == "Slope" && rb.velocity.y != 0 && !Input.GetKey(KeyCode.Space))
+        {
+            CreateDust();
         }
     }
 }

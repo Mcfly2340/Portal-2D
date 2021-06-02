@@ -12,13 +12,20 @@ public class StartCutscene : MonoBehaviour
     public GameObject explosionLight;
     public GameObject fires;
     public GameObject collideWithFire;
+    public GameObject Electricity;
     public GameObject Roof;
     public GameObject destoyedRoof;
     public GameObject startText;
+    public GameObject openDoorsText;
+    public GameObject runText;
+    public GameObject CamTrigger;
+    public GameObject winScreen;
+    public Camera Cam;
 
     [Header("Others")]
     [Space]
-    
+
+    public Animator transition;
     public Animator camAnim;
     public Rigidbody2D prb;
     public Animator playerAnimation;
@@ -35,7 +42,6 @@ public class StartCutscene : MonoBehaviour
     {
         cutsceneTrigger = GetComponent<BoxCollider2D>();
         stopRunning();
-
     }
     private void Update()
     {
@@ -43,22 +49,40 @@ public class StartCutscene : MonoBehaviour
         {
             cutsceneTrigger.isTrigger = true;
         }
+
+        StartCoroutine(IfBuildingCamIsOn());
     }
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if(collider.tag == "Player" && PlayerController.isCrawling)
+        if(this.gameObject.name == "CutsceneTrigger" && collider.tag == "Player" && PlayerController.isCrawling)
         {
             cutsceneTrigger.isTrigger = false;
             Debug.Log("collider on");
-        } else if (collider.tag == "Player" && !PlayerController.isCrawling)
+        } 
+        else if (this.gameObject.name == "CutsceneTrigger" && collider.tag == "Player" && !PlayerController.isCrawling)
         {
             isInCutscene = true;
-            StartCoroutine(startCutscene());
+            StartCoroutine(startCutscene1());
             Invoke(nameof(stopRunning), 3);
             PlayerController.canCrawl = true;
             PlayerController.canSprint = true;
             DoorWay.canGoThroughDoor = true;
             cutsceneTrigger.enabled = false;
+        }
+        if (this.gameObject.name == "BuildingTrigger" && collider.tag == "Player")
+        {
+            Debug.Log("Switching Camera");
+            startCutscene2();
+        }
+        if (this.gameObject.name == "Entrance" && collider.tag == "Player")
+        {
+            Debug.Log("Switching Camera");
+            StartCoroutine(startCutscene3());
+        }
+        if (this.gameObject.name == "MACHINE" && collider.tag == "Player")
+        {
+            Debug.Log("Finishing game");
+            StartCoroutine(startCutscene4());
         }
     }
     private void OnTriggerExit2D(Collider2D collider)
@@ -69,9 +93,11 @@ public class StartCutscene : MonoBehaviour
             Debug.Log("collider on");
         }
     }
-    IEnumerator startCutscene()
+    IEnumerator startCutscene1()
     {
         camAnim.SetBool("cutscene1", true);
+
+        Electricity.SetActive(true);
         //walking for scene
         for (int i = 0; i < 200; i++)
         {
@@ -79,13 +105,16 @@ public class StartCutscene : MonoBehaviour
             prb.transform.Translate(0.1f, 0, 0, 0);
         }
         //player can stand still after walking
-        Machine.isStandingStill = true;
+        Machine.shouldNotBeMoving = true;
 
         //wait 5 seconds
         yield return new WaitForSeconds(4);
 
         //stop chattering
         chattering.Stop();
+
+        //set electricity on when entering the room
+        Electricity.SetActive(false);
 
         //explosion effect
         explosionEffect.SetActive(true);
@@ -109,25 +138,29 @@ public class StartCutscene : MonoBehaviour
         //set destroyed roof to enabled
         destoyedRoof.SetActive(true);
 
-        //set sound to false when volume is 0
+        //set texts to on or off
         startText.SetActive(false);
+        openDoorsText.SetActive(true);
+        runText.SetActive(true);
 
         //lower earring sound
         //lower light
-        float j = 2;
+        float j = 1;
         for (float i = 0.3f; i >= 0; i -= 0.01f)
         {
             earRingSound.volume = i;
             yield return new WaitForSeconds(0.5f);
 
-            j -= 0.066f;
+            j -= 0.0333f;
             
             explosionLight2D.intensity = j;
         }
 
         //can walk again
-        Machine.isStandingStill = false;
+        Machine.shouldNotBeMoving = false;
+        camAnim.SetBool("cutscene1", false);
 
+        //set firealarm volume higher
         for (float i = 0f; i <= 1; i += 0.05f)
         {
             yield return new WaitForSeconds(0.5f);
@@ -137,14 +170,49 @@ public class StartCutscene : MonoBehaviour
     }
     void stopRunning()
     {
-        camAnim.SetBool("cutscene1", false);
         isInCutscene = false;
     }
-    void enableFires()
-    {/*
-        for (int i = 0; i < fire.Length; i++)
+    void startCutscene2()
+    {
+        camAnim.SetBool("PortalCamIsEnabled", true);
+        prb.transform.Translate(2f, 0, 0, 0);
+        Machine.shouldNotBeMoving = true;
+    }
+    IEnumerator startCutscene3()
+    {
+        yield return new WaitForSeconds(0.1f);
+        Machine.shouldNotBeMoving = true;
+        camAnim.SetBool("LastSceneIsEnabled", true);
+
+
+        for (int i = 0; i < 250; i++)
         {
-            fire[i].SetActive(true);
-        }*/
+            yield return new WaitForSeconds(0.01f);
+            prb.transform.Translate(0.1f, prb.transform.position.y, prb.transform.position.z, 0);
+        }
+        Machine.shouldNotBeMoving = false;
+        stopRunning();
+    }
+    IEnumerator startCutscene4()
+    {
+        yield return new WaitForSeconds(0.85f);
+        transition.SetTrigger("Start");
+        yield return new WaitForSeconds(0.85f);
+        //twice because it doesn't trigger once
+        transition.SetTrigger("End");
+        winScreen.SetActive(true);
+        transition.SetTrigger("End");
+        Destroy(this);
+    }
+
+    IEnumerator IfBuildingCamIsOn()
+    {
+        if (Input.GetButtonDown("Fire1") && Machine.shouldNotBeMoving == true || Input.GetButtonDown("Fire2") && Machine.shouldNotBeMoving == true)
+        {
+            yield return new WaitForSeconds(0.5f);
+            camAnim.SetBool("PortalCamIsEnabled", false);
+            Machine.shouldNotBeMoving = false;
+            Destroy(CamTrigger);
+        }
     }
 }

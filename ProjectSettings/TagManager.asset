@@ -8,6 +8,7 @@ TagManager:
   - Ceiling
   - Floor
   - Left & Right
+  - Slope
   layers:
   - Default
   - TransparentFX

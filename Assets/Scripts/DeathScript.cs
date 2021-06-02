@@ -19,9 +19,8 @@ public class DeathScript : MonoBehaviour
         deathScreen = deathScreenRef;
     }
     private void OnTriggerEnter2D(Collider2D collision)
-    {
+    {//check if it's colliding with trigger and disable collider of player
         player.GetComponent<CapsuleCollider2D>().enabled = false;
-        Debug.Log("Dead");
         isDead = true;
     }
 }

@@ -5,19 +5,29 @@ using UnityEngine.SceneManagement;
 
 public class DoorWay : MonoBehaviour
 {
-    public static bool canGoThroughDoor = false;
+    public Animator transition;
+
     public GameObject spawnPosDoor;
     public GameObject fires;
+    public static bool canGoThroughDoor = false;
+    
     private void OnTriggerStay2D(Collider2D collision)
-    {
+    {//if you can go through door (after 1st scene)
         if (canGoThroughDoor)
         {
             if (Input.GetKeyDown(KeyCode.F))
             {
-                FindObjectOfType<PlayerController>().gameObject.transform.position = new Vector2(spawnPosDoor.transform.position.x, spawnPosDoor.transform.position.y);
+                StartCoroutine(Teleport());
                 fires.SetActive(false);
             }
         }
-        
+    }
+    IEnumerator Teleport()
+    {//door "loading screen"
+        transition.SetTrigger("Start");
+        yield return new WaitForSeconds(0.85f);
+        FindObjectOfType<PlayerController>().gameObject.transform.position = new Vector3(spawnPosDoor.transform.position.x, spawnPosDoor.transform.position.y, spawnPosDoor.transform.position.z);
+        yield return new WaitForSeconds(0.85f);
+        transition.SetTrigger("End");
     }
 }

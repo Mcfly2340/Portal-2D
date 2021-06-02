@@ -10,7 +10,7 @@ public class LevelLoader : MonoBehaviour
     public static float transitionTime = 1f;
 
     public void LoadNextLevel()
-    {
+    {//load next scene
         StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
     }
     IEnumerator LoadLevel(int levelIndex)

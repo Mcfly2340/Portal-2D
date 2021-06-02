@@ -6,7 +6,7 @@ public class EquipDevice : MonoBehaviour
 {
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Device is equiped");
+        //equip portal device
         Portal.portalIsEquiped = true;
         Destroy(gameObject);
     }

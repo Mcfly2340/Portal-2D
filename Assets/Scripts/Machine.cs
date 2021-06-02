@@ -21,7 +21,7 @@ public class Machine : MonoBehaviour
 
     //booleans
     private bool alreadyPlayed = false;
-    public static bool isStandingStill = false;
+    public static bool shouldNotBeMoving = false;
 
 
     private void Awake()
@@ -37,24 +37,35 @@ public class Machine : MonoBehaviour
     {
         
         if (!alreadyPlayed)
-        {
+        {//play only once
             machineSound.SetActive(true);
             alreadyPlayed = true;
         }
 
         //disable player movements
-        isStandingStill = true;
+        shouldNotBeMoving = true;
+
+        //rotate machine
         MachineShake.SetBool("HasEntered", true);
         ClockRotation.SetBool("HasEntered", true);
+
         yield return new WaitForSeconds(transitionTime);
+
         transition.SetTrigger("Start");
-        //stop firealarm
+
+        //stop firealarm when in future
         fireAlarm.SetActive(false);
+
         yield return new WaitForSeconds(transitionTime);
+
+        //teleport to future
         player.transform.position = futureSpawnPoint.transform.position;
+
         transition.SetTrigger("End");
+
         ambientSound.SetActive(true);
-        isStandingStill = false;
+
+        shouldNotBeMoving = false;
         Portal.isInFuture = true;
     }
 }

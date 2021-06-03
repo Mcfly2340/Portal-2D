@@ -20,6 +20,7 @@ public class StartCutscene : MonoBehaviour
     public GameObject runText;
     public GameObject CamTrigger;
     public GameObject winScreen;
+    public GameObject[] People = new GameObject[8];
     public Camera Cam;
 
     [Header("Others")]
@@ -41,7 +42,7 @@ public class StartCutscene : MonoBehaviour
     private void Start()
     {
         cutsceneTrigger = GetComponent<BoxCollider2D>();
-        stopRunning();
+        playerAnimation.enabled = true;
     }
     private void Update()
     {
@@ -99,13 +100,15 @@ public class StartCutscene : MonoBehaviour
 
         Electricity.SetActive(true);
         //walking for scene
-        for (int i = 0; i < 200; i++)
+        for (int i = 0; i < 50; i++)
         {
             yield return new WaitForSeconds(0.01f);
             prb.transform.Translate(0.1f, 0, 0, 0);
         }
         //player can stand still after walking
+        stopRunning();
         Machine.shouldNotBeMoving = true;
+        playerAnimation.enabled = true;
 
         //wait 5 seconds
         yield return new WaitForSeconds(4);
@@ -138,6 +141,12 @@ public class StartCutscene : MonoBehaviour
         //set destroyed roof to enabled
         destoyedRoof.SetActive(true);
 
+        for (int i = 0; i < People.Length; i++)
+        {
+            People[i].transform.Rotate(0, 0, 90);
+            People[i].transform.position = new Vector3(People[i].transform.position.x, People[i].transform.position.y - 1, People[i].transform.position.z);
+        }
+
         //set texts to on or off
         startText.SetActive(false);
         openDoorsText.SetActive(true);
@@ -159,6 +168,7 @@ public class StartCutscene : MonoBehaviour
         //can walk again
         Machine.shouldNotBeMoving = false;
         camAnim.SetBool("cutscene1", false);
+        playerAnimation.enabled = true;
 
         //set firealarm volume higher
         for (float i = 0f; i <= 1; i += 0.05f)
@@ -171,6 +181,7 @@ public class StartCutscene : MonoBehaviour
     void stopRunning()
     {
         isInCutscene = false;
+        playerAnimation.enabled = false;
     }
     void startCutscene2()
     {
@@ -180,28 +191,18 @@ public class StartCutscene : MonoBehaviour
     }
     IEnumerator startCutscene3()
     {
-        yield return new WaitForSeconds(0.1f);
-        Machine.shouldNotBeMoving = true;
+        yield return new WaitForSeconds(0.5f);
         camAnim.SetBool("LastSceneIsEnabled", true);
-
-
-        for (int i = 0; i < 250; i++)
-        {
-            yield return new WaitForSeconds(0.01f);
-            prb.transform.Translate(0.1f, prb.transform.position.y, prb.transform.position.z, 0);
-        }
-        Machine.shouldNotBeMoving = false;
-        stopRunning();
     }
     IEnumerator startCutscene4()
     {
         yield return new WaitForSeconds(0.85f);
         transition.SetTrigger("Start");
         yield return new WaitForSeconds(0.85f);
-        //twice because it doesn't trigger once
         transition.SetTrigger("End");
         winScreen.SetActive(true);
-        transition.SetTrigger("End");
+        Portal.portalIsEquiped = false;
+        Cursor.visible = true;
         Destroy(this);
     }
 

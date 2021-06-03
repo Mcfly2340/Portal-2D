@@ -162,11 +162,11 @@ public class Menu : MonoBehaviour
     }
     public void ToTitleButton()
     {//for when to go the title of the game
+        DeathScript.isDead = false;
+        StartCoroutine(WaitForSeconds(0, 1));
         pauseMenuUI.SetActive(false);
         deathScreenUI.SetActive(false);
         winScreen.SetActive(false);
-        DeathScript.isDead = false;
-        StartCoroutine(WaitForSeconds(0, 1));
         Debug.Log("To Title...");
         Time.timeScale = 1f;
     }

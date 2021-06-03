@@ -18,7 +18,6 @@ public class DoorWay : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.F))
             {
                 StartCoroutine(Teleport());
-                fires.SetActive(false);
             }
         }
     }
@@ -26,6 +25,7 @@ public class DoorWay : MonoBehaviour
     {//door "loading screen"
         transition.SetTrigger("Start");
         yield return new WaitForSeconds(0.85f);
+        fires.SetActive(false);
         FindObjectOfType<PlayerController>().gameObject.transform.position = new Vector3(spawnPosDoor.transform.position.x, spawnPosDoor.transform.position.y, spawnPosDoor.transform.position.z);
         yield return new WaitForSeconds(0.85f);
         transition.SetTrigger("End");
